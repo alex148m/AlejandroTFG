@@ -1,0 +1,113 @@
+[ c: 1.000 s: 25.000% ] astigmatism=yes tears=reduced => none
+[ c: 0.750 s: 25.000% ] astigmatism=yes none => tears=reduced
+[ c: 1.000 s:  4.167% ] age=presbyopic astigmatism=yes prescription=hypermetrope tears=reduced => none
+[ c: 1.000 s: 12.500% ] astigmatism=no prescription=hypermetrope tears=normal => soft
+[ c: 1.000 s: 12.500% ] prescription=hypermetrope soft => astigmatism=no tears=normal
+[ c: 1.000 s:  8.333% ] age=young astigmatism=no tears=reduced => none
+[ c: 1.000 s:  8.333% ] age=young astigmatism=no none => tears=reduced
+[ c: 1.000 s:  4.167% ] age=young astigmatism=no prescription=hypermetrope tears=reduced => none
+[ c: 1.000 s:  4.167% ] age=young astigmatism=no none prescription=hypermetrope => tears=reduced
+[ c: 1.000 s: 25.000% ] prescription=myope tears=reduced => none
+[ c: 0.857 s: 25.000% ] none prescription=myope => tears=reduced
+[ c: 1.000 s:  4.167% ] age=presbyopic astigmatism=yes none tears=normal => prescription=hypermetrope
+[ c: 1.000 s:  4.167% ] age=presbyopic none prescription=hypermetrope tears=normal => astigmatism=yes
+[ c: 1.000 s:  4.167% ] age=presbyopic astigmatism=yes prescription=hypermetrope tears=normal => none
+[ c: 1.000 s:  4.167% ] age=presbyopic soft => astigmatism=no prescription=hypermetrope tears=normal
+[ c: 1.000 s:  4.167% ] age=presbyopic astigmatism=no prescription=hypermetrope tears=normal => soft
+[ c: 1.000 s:  8.333% ] age=young prescription=myope tears=reduced => none
+[ c: 1.000 s:  8.333% ] age=young none prescription=myope => tears=reduced
+[ c: 1.000 s:  8.333% ] age=pre-presbyopic prescription=hypermetrope tears=reduced => none
+[ c: 1.000 s:  4.167% ] age=presbyopic astigmatism=yes prescription=myope tears=reduced => none
+[ c: 1.000 s:  4.167% ] age=presbyopic astigmatism=yes none prescription=myope => tears=reduced
+[ c: 1.000 s:  4.167% ] age=presbyopic astigmatism=no prescription=hypermetrope tears=reduced => none
+[ c: 1.000 s:  4.167% ] age=presbyopic astigmatism=no none prescription=hypermetrope => tears=reduced
+[ c: 0.750 s: 25.000% ] age=presbyopic => none
+[ c: 1.000 s:  8.333% ] age=presbyopic astigmatism=yes tears=reduced => none
+[ c: 1.000 s:  4.167% ] age=presbyopic astigmatism=no prescription=myope tears=reduced => none
+[ c: 1.000 s: 12.500% ] astigmatism=no prescription=hypermetrope tears=reduced => none
+[ c: 1.000 s: 12.500% ] astigmatism=no none prescription=hypermetrope => tears=reduced
+[ c: 1.000 s:  4.167% ] age=young astigmatism=no prescription=myope tears=reduced => none
+[ c: 1.000 s:  4.167% ] age=young astigmatism=no none prescription=myope => tears=reduced
+[ c: 1.000 s: 16.667% ] age=young tears=reduced => none
+[ c: 1.000 s: 16.667% ] age=young none => tears=reduced
+[ c: 1.000 s:  8.333% ] age=presbyopic astigmatism=yes prescription=hypermetrope => none
+[ c: 1.000 s:  8.333% ] age=pre-presbyopic astigmatism=no tears=reduced => none
+[ c: 1.000 s:  8.333% ] age=pre-presbyopic astigmatism=no none => tears=reduced
+[ c: 1.000 s:  4.167% ] age=pre-presbyopic astigmatism=no prescription=myope tears=normal => soft
+[ c: 1.000 s:  4.167% ] age=pre-presbyopic prescription=myope soft => astigmatism=no tears=normal
+[ c: 1.000 s:  4.167% ] age=young prescription=hypermetrope soft => astigmatism=no tears=normal
+[ c: 1.000 s:  4.167% ] age=young astigmatism=no prescription=hypermetrope tears=normal => soft
+[ c: 1.000 s:  8.333% ] age=young soft => astigmatism=no tears=normal
+[ c: 1.000 s:  8.333% ] age=young astigmatism=no tears=normal => soft
+[ c: 1.000 s:  4.167% ] age=pre-presbyopic astigmatism=no prescription=myope tears=reduced => none
+[ c: 1.000 s:  4.167% ] age=pre-presbyopic astigmatism=no none prescription=myope => tears=reduced
+[ c: 1.000 s:  4.167% ] age=pre-presbyopic astigmatism=no prescription=hypermetrope tears=normal => soft
+[ c: 1.000 s:  4.167% ] age=pre-presbyopic prescription=hypermetrope soft => astigmatism=no tears=normal
+[ c: 1.000 s:  8.333% ] age=young prescription=hypermetrope tears=reduced => none
+[ c: 1.000 s:  8.333% ] age=young none prescription=hypermetrope => tears=reduced
+[ c: 1.000 s:  4.167% ] hard prescription=hypermetrope => age=young astigmatism=yes tears=normal
+[ c: 1.000 s:  4.167% ] age=young astigmatism=yes prescription=hypermetrope tears=normal => hard
+[ c: 1.000 s:  4.167% ] age=pre-presbyopic astigmatism=yes prescription=myope tears=reduced => none
+[ c: 1.000 s:  4.167% ] age=pre-presbyopic astigmatism=yes none prescription=myope => tears=reduced
+[ c: 1.000 s:  4.167% ] age=young astigmatism=yes prescription=hypermetrope tears=reduced => none
+[ c: 1.000 s:  4.167% ] age=young astigmatism=yes none prescription=hypermetrope => tears=reduced
+[ c: 1.000 s:  8.333% ] age=young astigmatism=yes tears=reduced => none
+[ c: 1.000 s:  8.333% ] age=young astigmatism=yes none => tears=reduced
+[ c: 0.750 s: 12.500% ] hard => astigmatism=yes prescription=myope tears=normal
+[ c: 1.000 s: 12.500% ] astigmatism=yes prescription=myope tears=normal => hard
+[ c: 1.000 s:  8.333% ] age=pre-presbyopic astigmatism=no tears=normal => soft
+[ c: 1.000 s:  8.333% ] age=pre-presbyopic soft => astigmatism=no tears=normal
+[ c: 0.750 s: 12.500% ] age=pre-presbyopic prescription=hypermetrope => none
+[ c: 1.000 s: 12.500% ] astigmatism=yes prescription=hypermetrope tears=reduced => none
+[ c: 1.000 s: 16.667% ] age=presbyopic tears=reduced => none
+[ c: 1.000 s: 50.000% ] tears=reduced => none
+[ c: 0.800 s: 50.000% ] none => tears=reduced
+[ c: 0.833 s: 20.833% ] astigmatism=no tears=normal => soft
+[ c: 1.000 s: 20.833% ] soft => astigmatism=no tears=normal
+[ c: 1.000 s: 25.000% ] astigmatism=no tears=reduced => none
+[ c: 0.857 s: 25.000% ] astigmatism=no none => tears=reduced
+[ c: 0.750 s: 12.500% ] age=presbyopic astigmatism=yes => none
+[ c: 1.000 s:  4.167% ] age=pre-presbyopic astigmatism=no prescription=hypermetrope tears=reduced => none
+[ c: 1.000 s:  4.167% ] age=pre-presbyopic astigmatism=no none prescription=hypermetrope => tears=reduced
+[ c: 1.000 s:  8.333% ] age=young hard => astigmatism=yes tears=normal
+[ c: 1.000 s:  8.333% ] age=young astigmatism=yes tears=normal => hard
+[ c: 1.000 s:  4.167% ] age=pre-presbyopic none tears=normal => astigmatism=yes prescription=hypermetrope
+[ c: 1.000 s:  4.167% ] age=pre-presbyopic astigmatism=yes prescription=hypermetrope tears=normal => none
+[ c: 0.750 s: 12.500% ] age=presbyopic astigmatism=no => none
+[ c: 1.000 s:  4.167% ] age=young astigmatism=no prescription=myope tears=normal => soft
+[ c: 1.000 s:  4.167% ] age=young prescription=myope soft => astigmatism=no tears=normal
+[ c: 1.000 s:  8.333% ] age=presbyopic prescription=hypermetrope tears=reduced => none
+[ c: 1.000 s:  4.167% ] age=young hard prescription=myope => astigmatism=yes tears=normal
+[ c: 1.000 s:  4.167% ] age=young astigmatism=yes prescription=myope tears=normal => hard
+[ c: 1.000 s:  4.167% ] age=presbyopic astigmatism=no prescription=myope tears=normal => none
+[ c: 1.000 s:  4.167% ] astigmatism=no none tears=normal => age=presbyopic prescription=myope
+[ c: 1.000 s:  4.167% ] none prescription=myope tears=normal => age=presbyopic astigmatism=no
+[ c: 1.000 s:  4.167% ] age=pre-presbyopic astigmatism=yes prescription=hypermetrope tears=reduced => none
+[ c: 1.000 s:  8.333% ] age=presbyopic prescription=myope tears=reduced => none
+[ c: 1.000 s:  8.333% ] astigmatism=yes none tears=normal => prescription=hypermetrope
+[ c: 1.000 s:  8.333% ] none prescription=hypermetrope tears=normal => astigmatism=yes
+[ c: 1.000 s:  8.333% ] age=pre-presbyopic astigmatism=yes tears=reduced => none
+[ c: 1.000 s:  8.333% ] age=presbyopic astigmatism=no prescription=myope => none
+[ c: 1.000 s: 12.500% ] astigmatism=yes prescription=myope tears=reduced => none
+[ c: 1.000 s: 12.500% ] astigmatism=yes none prescription=myope => tears=reduced
+[ c: 1.000 s: 25.000% ] prescription=hypermetrope tears=reduced => none
+[ c: 0.750 s: 25.000% ] none prescription=hypermetrope => tears=reduced
+[ c: 1.000 s:  4.167% ] age=presbyopic hard => astigmatism=yes prescription=myope tears=normal
+[ c: 1.000 s:  4.167% ] age=presbyopic astigmatism=yes prescription=myope tears=normal => hard
+[ c: 1.000 s:  8.333% ] age=pre-presbyopic prescription=myope tears=reduced => none
+[ c: 1.000 s:  8.333% ] age=pre-presbyopic none prescription=myope => tears=reduced
+[ c: 1.000 s: 12.500% ] astigmatism=no prescription=myope tears=reduced => none
+[ c: 0.750 s: 12.500% ] astigmatism=no none prescription=myope => tears=reduced
+[ c: 1.000 s:  8.333% ] prescription=myope soft => astigmatism=no tears=normal
+[ c: 0.833 s: 20.833% ] astigmatism=yes prescription=hypermetrope => none
+[ c: 1.000 s: 16.667% ] age=pre-presbyopic tears=reduced => none
+[ c: 0.800 s: 16.667% ] age=pre-presbyopic none => tears=reduced
+[ c: 1.000 s:  8.333% ] age=presbyopic astigmatism=no tears=reduced => none
+[ c: 0.750 s: 12.500% ] age=presbyopic prescription=hypermetrope => none
+[ c: 1.000 s:  4.167% ] age=pre-presbyopic hard => astigmatism=yes prescription=myope tears=normal
+[ c: 1.000 s:  4.167% ] age=pre-presbyopic astigmatism=yes prescription=myope tears=normal => hard
+[ c: 1.000 s:  4.167% ] age=young astigmatism=yes prescription=myope tears=reduced => none
+[ c: 1.000 s:  4.167% ] age=young astigmatism=yes none prescription=myope => tears=reduced
+[ c: 1.000 s:  8.333% ] age=pre-presbyopic astigmatism=yes prescription=hypermetrope => none
+[ c: 0.750 s: 12.500% ] age=pre-presbyopic astigmatism=yes => none
+[ c: 0.750 s: 12.500% ] age=presbyopic prescription=myope => none

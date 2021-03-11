@@ -1,0 +1,674 @@
+<?xml version="1.0" ?>
+<xmlclosurespace>
+	<context>
+		<parameters filename="lenses_recoded" support="0.1%"/>
+	</context>
+	<closures>
+		<closure card="0" hashcode="133156838395276" support="24"/>
+		<closure card="1" hashcode="-4556556597807957732" support="15">
+			<item value="none"/>
+		</closure>
+		<closure card="1" hashcode="-6104909496225847773" support="12">
+			<item value="prescription=myope"/>
+		</closure>
+		<closure card="1" hashcode="-4985552290921835821" support="12">
+			<item value="tears=normal"/>
+		</closure>
+		<closure card="1" hashcode="-411842916715108964" support="12">
+			<item value="astigmatism=yes"/>
+		</closure>
+		<closure card="1" hashcode="1637427663420780934" support="12">
+			<item value="prescription=hypermetrope"/>
+		</closure>
+		<closure card="1" hashcode="5253757598472105329" support="12">
+			<item value="astigmatism=no"/>
+		</closure>
+		<closure card="2" hashcode="-2766081133035789065" support="12">
+			<item value="none"/>
+			<item value="tears=reduced"/>
+		</closure>
+		<closure card="1" hashcode="-5852631107113283055" support="8">
+			<item value="age=young"/>
+		</closure>
+		<closure card="1" hashcode="-9487033605461778" support="8">
+			<item value="age=pre-presbyopic"/>
+		</closure>
+		<closure card="1" hashcode="4539556271557765954" support="8">
+			<item value="age=presbyopic"/>
+		</closure>
+		<closure card="2" hashcode="-3179130034317617058" support="8">
+			<item value="astigmatism=yes"/>
+			<item value="none"/>
+		</closure>
+		<closure card="2" hashcode="3693880401986234484" support="8">
+			<item value="none"/>
+			<item value="prescription=hypermetrope"/>
+		</closure>
+		<closure card="2" hashcode="79280112793993455" support="7">
+			<item value="astigmatism=no"/>
+			<item value="none"/>
+		</closure>
+		<closure card="2" hashcode="7186711178151370197" support="7">
+			<item value="none"/>
+			<item value="prescription=myope"/>
+		</closure>
+		<closure card="2" hashcode="-8869669665119042023" support="6">
+			<item value="astigmatism=no"/>
+			<item value="prescription=hypermetrope"/>
+		</closure>
+		<closure card="2" hashcode="-5538191696108214363" support="6">
+			<item value="astigmatism=yes"/>
+			<item value="tears=normal"/>
+		</closure>
+		<closure card="2" hashcode="-4230310055272328709" support="6">
+			<item value="prescription=hypermetrope"/>
+			<item value="tears=normal"/>
+		</closure>
+		<closure card="2" hashcode="-671128029310738091" support="6">
+			<item value="astigmatism=yes"/>
+			<item value="prescription=myope"/>
+		</closure>
+		<closure card="2" hashcode="1737186995611566848" support="6">
+			<item value="astigmatism=no"/>
+			<item value="tears=normal"/>
+		</closure>
+		<closure card="2" hashcode="2175740647252574288" support="6">
+			<item value="age=presbyopic"/>
+			<item value="none"/>
+		</closure>
+		<closure card="2" hashcode="3584776136726372340" support="6">
+			<item value="astigmatism=yes"/>
+			<item value="prescription=hypermetrope"/>
+		</closure>
+		<closure card="2" hashcode="3694508967615621520" support="6">
+			<item value="astigmatism=no"/>
+			<item value="prescription=myope"/>
+		</closure>
+		<closure card="2" hashcode="8767043953306488142" support="6">
+			<item value="prescription=myope"/>
+			<item value="tears=normal"/>
+		</closure>
+		<closure card="3" hashcode="-6263153100367704707" support="6">
+			<item value="none"/>
+			<item value="prescription=hypermetrope"/>
+			<item value="tears=reduced"/>
+		</closure>
+		<closure card="3" hashcode="62735073207937235" support="6">
+			<item value="astigmatism=yes"/>
+			<item value="none"/>
+			<item value="tears=reduced"/>
+		</closure>
+		<closure card="3" hashcode="2567909372695431212" support="6">
+			<item value="none"/>
+			<item value="prescription=myope"/>
+			<item value="tears=reduced"/>
+		</closure>
+		<closure card="3" hashcode="3613692929792410898" support="6">
+			<item value="astigmatism=no"/>
+			<item value="none"/>
+			<item value="tears=reduced"/>
+		</closure>
+		<closure card="2" hashcode="1817061497067961100" support="5">
+			<item value="age=pre-presbyopic"/>
+			<item value="none"/>
+		</closure>
+		<closure card="3" hashcode="-7653157345239812350" support="5">
+			<item value="astigmatism=no"/>
+			<item value="soft"/>
+			<item value="tears=normal"/>
+		</closure>
+		<closure card="3" hashcode="7431811158165140912" support="5">
+			<item value="astigmatism=yes"/>
+			<item value="none"/>
+			<item value="prescription=hypermetrope"/>
+		</closure>
+		<closure card="2" hashcode="-7186530222897897056" support="4">
+			<item value="age=young"/>
+			<item value="tears=normal"/>
+		</closure>
+		<closure card="2" hashcode="-4092455547664651056" support="4">
+			<item value="age=presbyopic"/>
+			<item value="astigmatism=yes"/>
+		</closure>
+		<closure card="2" hashcode="-3194271704979641066" support="4">
+			<item value="age=pre-presbyopic"/>
+			<item value="prescription=hypermetrope"/>
+		</closure>
+		<closure card="2" hashcode="-882856849809101373" support="4">
+			<item value="age=pre-presbyopic"/>
+			<item value="tears=normal"/>
+		</closure>
+		<closure card="2" hashcode="1153272326072538831" support="4">
+			<item value="age=young"/>
+			<item value="astigmatism=yes"/>
+		</closure>
+		<closure card="2" hashcode="1552528827115767603" support="4">
+			<item value="age=pre-presbyopic"/>
+			<item value="prescription=myope"/>
+		</closure>
+		<closure card="2" hashcode="1605715572339782143" support="4">
+			<item value="age=presbyopic"/>
+			<item value="tears=normal"/>
+		</closure>
+		<closure card="2" hashcode="1946474433402453786" support="4">
+			<item value="age=presbyopic"/>
+			<item value="prescription=hypermetrope"/>
+		</closure>
+		<closure card="2" hashcode="3315335233021283001" support="4">
+			<item value="age=young"/>
+			<item value="prescription=hypermetrope"/>
+		</closure>
+		<closure card="2" hashcode="3325338421632717359" support="4">
+			<item value="age=presbyopic"/>
+			<item value="prescription=myope"/>
+		</closure>
+		<closure card="2" hashcode="4259704393727269616" support="4">
+			<item value="age=young"/>
+			<item value="prescription=myope"/>
+		</closure>
+		<closure card="2" hashcode="6616510446311121470" support="4">
+			<item value="age=young"/>
+			<item value="astigmatism=no"/>
+		</closure>
+		<closure card="2" hashcode="6680019438393068309" support="4">
+			<item value="age=presbyopic"/>
+			<item value="astigmatism=no"/>
+		</closure>
+		<closure card="2" hashcode="7070346370170173068" support="4">
+			<item value="age=pre-presbyopic"/>
+			<item value="astigmatism=yes"/>
+		</closure>
+		<closure card="2" hashcode="7554123019159799169" support="4">
+			<item value="age=pre-presbyopic"/>
+			<item value="astigmatism=no"/>
+		</closure>
+		<closure card="3" hashcode="-6694131361762544000" support="4">
+			<item value="astigmatism=yes"/>
+			<item value="hard"/>
+			<item value="tears=normal"/>
+		</closure>
+		<closure card="3" hashcode="-4314513429127688267" support="4">
+			<item value="age=pre-presbyopic"/>
+			<item value="none"/>
+			<item value="tears=reduced"/>
+		</closure>
+		<closure card="3" hashcode="3404767218950521057" support="4">
+			<item value="age=presbyopic"/>
+			<item value="none"/>
+			<item value="tears=reduced"/>
+		</closure>
+		<closure card="3" hashcode="3886389545883524948" support="4">
+			<item value="astigmatism=no"/>
+			<item value="none"/>
+			<item value="prescription=myope"/>
+		</closure>
+		<closure card="3" hashcode="5300487325896089714" support="4">
+			<item value="age=young"/>
+			<item value="none"/>
+			<item value="tears=reduced"/>
+		</closure>
+		<closure card="2" hashcode="2721460057282942757" support="3">
+			<item value="none"/>
+			<item value="tears=normal"/>
+		</closure>
+		<closure card="3" hashcode="-8078840703289751573" support="3">
+			<item value="age=presbyopic"/>
+			<item value="none"/>
+			<item value="prescription=myope"/>
+		</closure>
+		<closure card="3" hashcode="-7981461138134025006" support="3">
+			<item value="age=pre-presbyopic"/>
+			<item value="none"/>
+			<item value="prescription=hypermetrope"/>
+		</closure>
+		<closure card="3" hashcode="-7304789179790685208" support="3">
+			<item value="age=pre-presbyopic"/>
+			<item value="astigmatism=yes"/>
+			<item value="none"/>
+		</closure>
+		<closure card="3" hashcode="-5881191371031579489" support="3">
+			<item value="astigmatism=yes"/>
+			<item value="prescription=hypermetrope"/>
+			<item value="tears=normal"/>
+		</closure>
+		<closure card="3" hashcode="-1387149445441422181" support="3">
+			<item value="astigmatism=no"/>
+			<item value="prescription=myope"/>
+			<item value="tears=normal"/>
+		</closure>
+		<closure card="3" hashcode="2758936067482682169" support="3">
+			<item value="age=presbyopic"/>
+			<item value="astigmatism=no"/>
+			<item value="none"/>
+		</closure>
+		<closure card="3" hashcode="6196441097886473662" support="3">
+			<item value="age=presbyopic"/>
+			<item value="none"/>
+			<item value="prescription=hypermetrope"/>
+		</closure>
+		<closure card="3" hashcode="8174254918383315220" support="3">
+			<item value="age=presbyopic"/>
+			<item value="astigmatism=yes"/>
+			<item value="none"/>
+		</closure>
+		<closure card="4" hashcode="-7547708602272259177" support="3">
+			<item value="astigmatism=no"/>
+			<item value="none"/>
+			<item value="prescription=myope"/>
+			<item value="tears=reduced"/>
+		</closure>
+		<closure card="4" hashcode="-7052964426184587914" support="3">
+			<item value="astigmatism=yes"/>
+			<item value="none"/>
+			<item value="prescription=myope"/>
+			<item value="tears=reduced"/>
+		</closure>
+		<closure card="4" hashcode="-3975353935888984830" support="3">
+			<item value="astigmatism=no"/>
+			<item value="prescription=hypermetrope"/>
+			<item value="soft"/>
+			<item value="tears=normal"/>
+		</closure>
+		<closure card="4" hashcode="4581371450512893651" support="3">
+			<item value="astigmatism=yes"/>
+			<item value="none"/>
+			<item value="prescription=hypermetrope"/>
+			<item value="tears=reduced"/>
+		</closure>
+		<closure card="4" hashcode="6603212258735434441" support="3">
+			<item value="astigmatism=yes"/>
+			<item value="hard"/>
+			<item value="prescription=myope"/>
+			<item value="tears=normal"/>
+		</closure>
+		<closure card="4" hashcode="7414267017453676306" support="3">
+			<item value="astigmatism=no"/>
+			<item value="none"/>
+			<item value="prescription=hypermetrope"/>
+			<item value="tears=reduced"/>
+		</closure>
+		<closure card="3" hashcode="-7708981097594502853" support="2">
+			<item value="age=young"/>
+			<item value="prescription=myope"/>
+			<item value="tears=normal"/>
+		</closure>
+		<closure card="3" hashcode="-7602456088549015787" support="2">
+			<item value="age=young"/>
+			<item value="astigmatism=yes"/>
+			<item value="prescription=hypermetrope"/>
+		</closure>
+		<closure card="3" hashcode="-7392946553033678841" support="2">
+			<item value="age=pre-presbyopic"/>
+			<item value="astigmatism=yes"/>
+			<item value="tears=normal"/>
+		</closure>
+		<closure card="3" hashcode="-6172154965003667821" support="2">
+			<item value="age=pre-presbyopic"/>
+			<item value="astigmatism=no"/>
+			<item value="prescription=hypermetrope"/>
+		</closure>
+		<closure card="3" hashcode="-6053431633074564508" support="2">
+			<item value="age=presbyopic"/>
+			<item value="prescription=myope"/>
+			<item value="tears=normal"/>
+		</closure>
+		<closure card="3" hashcode="-5752965348520249548" support="2">
+			<item value="age=young"/>
+			<item value="astigmatism=yes"/>
+			<item value="prescription=myope"/>
+		</closure>
+		<closure card="3" hashcode="-3267167519112578725" support="2">
+			<item value="age=presbyopic"/>
+			<item value="astigmatism=yes"/>
+			<item value="tears=normal"/>
+		</closure>
+		<closure card="3" hashcode="-3188576324052286287" support="2">
+			<item value="age=pre-presbyopic"/>
+			<item value="prescription=hypermetrope"/>
+			<item value="tears=normal"/>
+		</closure>
+		<closure card="3" hashcode="-2792021249649516982" support="2">
+			<item value="age=presbyopic"/>
+			<item value="astigmatism=no"/>
+			<item value="tears=normal"/>
+		</closure>
+		<closure card="3" hashcode="-2680359862433345288" support="2">
+			<item value="age=pre-presbyopic"/>
+			<item value="prescription=myope"/>
+			<item value="tears=normal"/>
+		</closure>
+		<closure card="3" hashcode="-1868760330754459067" support="2">
+			<item value="age=presbyopic"/>
+			<item value="prescription=hypermetrope"/>
+			<item value="tears=normal"/>
+		</closure>
+		<closure card="3" hashcode="-1821773962041867813" support="2">
+			<item value="age=presbyopic"/>
+			<item value="none"/>
+			<item value="tears=normal"/>
+		</closure>
+		<closure card="3" hashcode="-143377891208607025" support="2">
+			<item value="age=presbyopic"/>
+			<item value="astigmatism=no"/>
+			<item value="prescription=hypermetrope"/>
+		</closure>
+		<closure card="3" hashcode="2650354884419310423" support="2">
+			<item value="age=pre-presbyopic"/>
+			<item value="astigmatism=yes"/>
+			<item value="prescription=myope"/>
+		</closure>
+		<closure card="3" hashcode="5244251036590733520" support="2">
+			<item value="age=young"/>
+			<item value="astigmatism=no"/>
+			<item value="prescription=hypermetrope"/>
+		</closure>
+		<closure card="3" hashcode="6321664365677904654" support="2">
+			<item value="age=young"/>
+			<item value="prescription=hypermetrope"/>
+			<item value="tears=normal"/>
+		</closure>
+		<closure card="3" hashcode="6539763343587777497" support="2">
+			<item value="age=young"/>
+			<item value="astigmatism=no"/>
+			<item value="prescription=myope"/>
+		</closure>
+		<closure card="3" hashcode="7491896745981185131" support="2">
+			<item value="age=presbyopic"/>
+			<item value="astigmatism=yes"/>
+			<item value="prescription=myope"/>
+		</closure>
+		<closure card="3" hashcode="8739055433247490742" support="2">
+			<item value="age=pre-presbyopic"/>
+			<item value="astigmatism=no"/>
+			<item value="prescription=myope"/>
+		</closure>
+		<closure card="4" hashcode="-9155658149286528902" support="2">
+			<item value="age=pre-presbyopic"/>
+			<item value="astigmatism=no"/>
+			<item value="none"/>
+			<item value="tears=reduced"/>
+		</closure>
+		<closure card="4" hashcode="-6986737064020423788" support="2">
+			<item value="age=pre-presbyopic"/>
+			<item value="none"/>
+			<item value="prescription=myope"/>
+			<item value="tears=reduced"/>
+		</closure>
+		<closure card="4" hashcode="-6337092696028028302" support="2">
+			<item value="age=young"/>
+			<item value="none"/>
+			<item value="prescription=hypermetrope"/>
+			<item value="tears=reduced"/>
+		</closure>
+		<closure card="4" hashcode="-5267821380506602953" support="2">
+			<item value="age=young"/>
+			<item value="none"/>
+			<item value="prescription=myope"/>
+			<item value="tears=reduced"/>
+		</closure>
+		<closure card="4" hashcode="-5153608937318594796" support="2">
+			<item value="age=presbyopic"/>
+			<item value="astigmatism=yes"/>
+			<item value="none"/>
+			<item value="prescription=hypermetrope"/>
+		</closure>
+		<closure card="4" hashcode="-4965234047332764304" support="2">
+			<item value="age=presbyopic"/>
+			<item value="astigmatism=no"/>
+			<item value="none"/>
+			<item value="prescription=myope"/>
+		</closure>
+		<closure card="4" hashcode="-4218995196374670707" support="2">
+			<item value="age=young"/>
+			<item value="astigmatism=no"/>
+			<item value="soft"/>
+			<item value="tears=normal"/>
+		</closure>
+		<closure card="4" hashcode="-2247245612106818634" support="2">
+			<item value="age=presbyopic"/>
+			<item value="astigmatism=no"/>
+			<item value="none"/>
+			<item value="tears=reduced"/>
+		</closure>
+		<closure card="4" hashcode="-1593613363411020312" support="2">
+			<item value="age=pre-presbyopic"/>
+			<item value="astigmatism=yes"/>
+			<item value="none"/>
+			<item value="prescription=hypermetrope"/>
+		</closure>
+		<closure card="4" hashcode="-1321556056427721765" support="2">
+			<item value="age=young"/>
+			<item value="astigmatism=yes"/>
+			<item value="hard"/>
+			<item value="tears=normal"/>
+		</closure>
+		<closure card="4" hashcode="1333760969781824225" support="2">
+			<item value="age=presbyopic"/>
+			<item value="none"/>
+			<item value="prescription=hypermetrope"/>
+			<item value="tears=reduced"/>
+		</closure>
+		<closure card="4" hashcode="1533327042914110664" support="2">
+			<item value="age=young"/>
+			<item value="astigmatism=yes"/>
+			<item value="none"/>
+			<item value="tears=reduced"/>
+		</closure>
+		<closure card="4" hashcode="2568588574355689832" support="2">
+			<item value="age=presbyopic"/>
+			<item value="none"/>
+			<item value="prescription=myope"/>
+			<item value="tears=reduced"/>
+		</closure>
+		<closure card="4" hashcode="2928310891607373161" support="2">
+			<item value="astigmatism=yes"/>
+			<item value="none"/>
+			<item value="prescription=hypermetrope"/>
+			<item value="tears=normal"/>
+		</closure>
+		<closure card="4" hashcode="2968396710653079754" support="2">
+			<item value="age=pre-presbyopic"/>
+			<item value="astigmatism=no"/>
+			<item value="soft"/>
+			<item value="tears=normal"/>
+		</closure>
+		<closure card="4" hashcode="3974741610257670231" support="2">
+			<item value="age=presbyopic"/>
+			<item value="astigmatism=yes"/>
+			<item value="none"/>
+			<item value="tears=reduced"/>
+		</closure>
+		<closure card="4" hashcode="4472722272553434987" support="2">
+			<item value="age=pre-presbyopic"/>
+			<item value="astigmatism=yes"/>
+			<item value="none"/>
+			<item value="tears=reduced"/>
+		</closure>
+		<closure card="4" hashcode="7362914510935911965" support="2">
+			<item value="age=young"/>
+			<item value="astigmatism=no"/>
+			<item value="none"/>
+			<item value="tears=reduced"/>
+		</closure>
+		<closure card="4" hashcode="7581020885929023303" support="2">
+			<item value="astigmatism=no"/>
+			<item value="prescription=myope"/>
+			<item value="soft"/>
+			<item value="tears=normal"/>
+		</closure>
+		<closure card="4" hashcode="8586624754880654773" support="2">
+			<item value="age=pre-presbyopic"/>
+			<item value="none"/>
+			<item value="prescription=hypermetrope"/>
+			<item value="tears=reduced"/>
+		</closure>
+		<closure card="5" hashcode="-9019713390732433353" support="1">
+			<item value="age=presbyopic"/>
+			<item value="astigmatism=no"/>
+			<item value="none"/>
+			<item value="prescription=myope"/>
+			<item value="tears=normal"/>
+		</closure>
+		<closure card="5" hashcode="-7758238163556194849" support="1">
+			<item value="age=young"/>
+			<item value="astigmatism=yes"/>
+			<item value="none"/>
+			<item value="prescription=myope"/>
+			<item value="tears=reduced"/>
+		</closure>
+		<closure card="5" hashcode="-6767060887791450733" support="1">
+			<item value="age=presbyopic"/>
+			<item value="astigmatism=yes"/>
+			<item value="hard"/>
+			<item value="prescription=myope"/>
+			<item value="tears=normal"/>
+		</closure>
+		<closure card="5" hashcode="-6384271241096021965" support="1">
+			<item value="age=presbyopic"/>
+			<item value="astigmatism=yes"/>
+			<item value="none"/>
+			<item value="prescription=hypermetrope"/>
+			<item value="tears=normal"/>
+		</closure>
+		<closure card="5" hashcode="-5575868858325089135" support="1">
+			<item value="age=pre-presbyopic"/>
+			<item value="astigmatism=no"/>
+			<item value="none"/>
+			<item value="prescription=myope"/>
+			<item value="tears=reduced"/>
+		</closure>
+		<closure card="5" hashcode="-3937999580626945980" support="1">
+			<item value="age=presbyopic"/>
+			<item value="astigmatism=no"/>
+			<item value="none"/>
+			<item value="prescription=hypermetrope"/>
+			<item value="tears=reduced"/>
+		</closure>
+		<closure card="5" hashcode="-3720640398186984419" support="1">
+			<item value="age=young"/>
+			<item value="astigmatism=yes"/>
+			<item value="hard"/>
+			<item value="prescription=hypermetrope"/>
+			<item value="tears=normal"/>
+		</closure>
+		<closure card="5" hashcode="-3316145619197927884" support="1">
+			<item value="age=presbyopic"/>
+			<item value="astigmatism=no"/>
+			<item value="prescription=hypermetrope"/>
+			<item value="soft"/>
+			<item value="tears=normal"/>
+		</closure>
+		<closure card="5" hashcode="-3281306081486589044" support="1">
+			<item value="age=young"/>
+			<item value="astigmatism=yes"/>
+			<item value="hard"/>
+			<item value="prescription=myope"/>
+			<item value="tears=normal"/>
+		</closure>
+		<closure card="5" hashcode="-2654439154282798071" support="1">
+			<item value="age=presbyopic"/>
+			<item value="astigmatism=yes"/>
+			<item value="none"/>
+			<item value="prescription=hypermetrope"/>
+			<item value="tears=reduced"/>
+		</closure>
+		<closure card="5" hashcode="-980050203797631525" support="1">
+			<item value="age=young"/>
+			<item value="astigmatism=no"/>
+			<item value="none"/>
+			<item value="prescription=hypermetrope"/>
+			<item value="tears=reduced"/>
+		</closure>
+		<closure card="5" hashcode="-843739505538493489" support="1">
+			<item value="age=pre-presbyopic"/>
+			<item value="astigmatism=yes"/>
+			<item value="hard"/>
+			<item value="prescription=myope"/>
+			<item value="tears=normal"/>
+		</closure>
+		<closure card="5" hashcode="-354995690027707204" support="1">
+			<item value="age=pre-presbyopic"/>
+			<item value="astigmatism=yes"/>
+			<item value="none"/>
+			<item value="prescription=myope"/>
+			<item value="tears=reduced"/>
+		</closure>
+		<closure card="5" hashcode="-249924280247097654" support="1">
+			<item value="age=young"/>
+			<item value="astigmatism=yes"/>
+			<item value="none"/>
+			<item value="prescription=hypermetrope"/>
+			<item value="tears=reduced"/>
+		</closure>
+		<closure card="5" hashcode="628899369762985790" support="1">
+			<item value="age=young"/>
+			<item value="astigmatism=no"/>
+			<item value="prescription=myope"/>
+			<item value="soft"/>
+			<item value="tears=normal"/>
+		</closure>
+		<closure card="5" hashcode="1315715279177588800" support="1">
+			<item value="age=presbyopic"/>
+			<item value="astigmatism=yes"/>
+			<item value="none"/>
+			<item value="prescription=myope"/>
+			<item value="tears=reduced"/>
+		</closure>
+		<closure card="5" hashcode="5321696940851063949" support="1">
+			<item value="age=pre-presbyopic"/>
+			<item value="astigmatism=yes"/>
+			<item value="none"/>
+			<item value="prescription=hypermetrope"/>
+			<item value="tears=reduced"/>
+		</closure>
+		<closure card="5" hashcode="6325753748499024175" support="1">
+			<item value="age=pre-presbyopic"/>
+			<item value="astigmatism=yes"/>
+			<item value="none"/>
+			<item value="prescription=hypermetrope"/>
+			<item value="tears=normal"/>
+		</closure>
+		<closure card="5" hashcode="6846962608947100261" support="1">
+			<item value="age=presbyopic"/>
+			<item value="astigmatism=no"/>
+			<item value="none"/>
+			<item value="prescription=myope"/>
+			<item value="tears=reduced"/>
+		</closure>
+		<closure card="5" hashcode="7039112294339521304" support="1">
+			<item value="age=pre-presbyopic"/>
+			<item value="astigmatism=no"/>
+			<item value="none"/>
+			<item value="prescription=hypermetrope"/>
+			<item value="tears=reduced"/>
+		</closure>
+		<closure card="5" hashcode="7598253792216397163" support="1">
+			<item value="age=young"/>
+			<item value="astigmatism=no"/>
+			<item value="prescription=hypermetrope"/>
+			<item value="soft"/>
+			<item value="tears=normal"/>
+		</closure>
+		<closure card="5" hashcode="7684364539976994926" support="1">
+			<item value="age=young"/>
+			<item value="astigmatism=no"/>
+			<item value="none"/>
+			<item value="prescription=myope"/>
+			<item value="tears=reduced"/>
+		</closure>
+		<closure card="5" hashcode="7761965757512231553" support="1">
+			<item value="age=pre-presbyopic"/>
+			<item value="astigmatism=no"/>
+			<item value="prescription=myope"/>
+			<item value="soft"/>
+			<item value="tears=normal"/>
+		</closure>
+		<closure card="5" hashcode="8694691691169257160" support="1">
+			<item value="age=pre-presbyopic"/>
+			<item value="astigmatism=no"/>
+			<item value="prescription=hypermetrope"/>
+			<item value="soft"/>
+			<item value="tears=normal"/>
+		</closure>
+	</closures>
+</xmlclosurespace>
