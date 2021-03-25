@@ -6,19 +6,20 @@
 
 #+TITLE: Progreso Semanal 
 #+AUTHOR: Alejandro Martínez Floranes
-#+DATE: 17/3/2021
+#+DATE: 25/3/2021
 
 # Todas las semanas, se tiene que crear un reporte. 
 
-
-* En esta primera semana he consultado las diferentes referencias expuestas en el github, la charla del MIT sobre metaprogamación, otra charla de David Beazly sobre el mismo tema y por ultimo un curso de python también dirigido por David Beazly.
+* Resumen
+En esta primera semana he consultado las diferentes referencias expuestas en el github, la charla del MIT sobre metaprogamación, otra charla de David Beazly sobre el mismo tema y por ultimo un curso de python también dirigido por David Beazly.
 
 # Resuma brevemente el informe en 1-2 párrafos aquí. Este resumen debe
 # describir en forma concreta los objetivos actuales. Es posible que
 # quieras vincular a un archivo de proyecto que describe los objetivos
 # del proyecto. 
 
-* Primera Semana
+* Resultados y discusión de la semana pasada
+Discusión de como iniciar el proyecto, puntos importantes que poner en la memoria,en este caso, como realizo y porqué los test unitarios, y primera tarea a realizar: crear los test unitarios para las clases verbosity tanto de Pyhton2 como Python3
 
 
 # Use esta sección para describir lo que se completó la semana
@@ -31,8 +32,8 @@
 
 
 
-
-* Inicio de Proyecto
+* Estado actual
+Inicio de Proyecto, revisión de los videos expuestos en la bibliografia y realización del tutorial práctico en python
 # Describe brevemente el trabajo que se ha dedicado esta semana, entre
 # ellos literatura usada, experimentos, etc. Utilizar subsecciones
 # para organizar tu trabajo. 
