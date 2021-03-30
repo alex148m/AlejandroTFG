@@ -1,0 +1,11 @@
+mensaje de prueba 
+[Slatt] mensaje de prueba 
+[Slatt] Something is wrong! mensaje de prueba
+Verbosity: True
+Limit: 2
+Count: 0
+
+. Verbosity: True
+Limit: 1
+Count: 0
+

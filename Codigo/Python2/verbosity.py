@@ -62,6 +62,15 @@ class verbosity:
         return s+"\n"
 
 if __name__=="__main__":
-    pass
+    v = verbosity()
+    s="mensaje de prueba"
+    v.messg(s)
+    v.inimessg(s)
+    v.errmessg(s)
+    v.lim = 2
+    print v.__str__()
+    v.zero(1)
+    v.tick()
+    print v.__str__()
 
 ##    print "slatt module verbosity called as main and running as test..."

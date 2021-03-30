@@ -27,13 +27,13 @@ class verbosity(Structure):
     def messg(self, s):
         if not self.verb:
             return
-        print(s, end='')  # This prints in the same line
+        print(s, end=' ')  # Hay que poner end=' ' en lugar de end=''
 
     def inimessg(self, s):
         "initiates a sequence of related messg's"
         if not self.verb:
             return
-        print("\n[Slatt] "+s, end='')
+        print("\n[Slatt] "+s, end=' ') # Hay que poner end=' ' en lugar de end=''
 
     def errmessg(self,s):
         print("\n[Slatt] Something is wrong! "+s)
@@ -47,16 +47,26 @@ class verbosity(Structure):
             return
         self.count += 1
         if self.count == self.lim:
-            print('.', end='')
+            #print('.', end='')
+            print('. ', end='')
             self.count = 0
 
     def __str__(self):
         return 'Verbosity: {0}\nLimit: {1}\nCount: {2}\n'.format(self.verb,
                                                                    self.lim,
-                                                                   self.count)
-
+                                                                     self.count)
 
 if __name__=="__main__":
-    pass
+    v = verbosity()
+    s="mensaje de prueba"
+    v.messg(s)
+    v.inimessg(s)
+    v.errmessg(s)
+    v.lim = 2
+    print(v.__str__())
+    v.zero(1)
+    v.tick()
+    print (v.__str__())
+
 
 ##    print "slatt module verbosity called as main and running as test..."
