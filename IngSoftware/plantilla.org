@@ -4,14 +4,26 @@
 #+contributor: Domingo Gomez-Perez
 #+default-filename: weekly-progress-report.org
 
-#+TITLE: Progreso Semanal 
-#+AUTHOR: <replace: with your name>
-#+DATE: <replace: with today's date>
+#+TITLE: Progreso Semanal (Semana ##)
+#+AUTHOR: Alejandro Martínez Floranes
+#+DATE: 31/03/2021
 
 # Todas las semanas, se tiene que crear un reporte. 
 
 
 * Resumen
+Las reglas de asociación son objetos matemáticos empleados de forma extensa en disciplinas como la minería de datos, aprendizaje automático y representación del conocimiento, entre otros campos.
+Slatt es un proyecto de software libre desarrollado por José Luis Balcázar (Universidad Politécnica de Barcelona). Ofrece funcionalidades para el cálculo de reglas de asociación. Para ello, se apoya en implementaciones del algoritmo a priori para el cálculo de clausuras, el retículo de las clausuras y, entre otras
+funcionalidades,devuelve las reglas representativas para cualquier elección de los parámetros de soporte y confianza.
+
+En este proyecto, se propone mejorar este software utilizando como base las implementaciones disponibles en Slatt
+aplicadas a:
+
+- hipergrafos y algoritmos con aplicación a estos objetos;
+- cálculo de clausuras y retículos (lattices);
+
+Este trabajo requerirá la búsqueda y análisis de algoritmos propuestos en la literatura científica sobre los puntos anteriores.
+El lenguaje de desarrollo será Python3, encontrándose la implementación anterior en Python 2.7
 
 # Resuma brevemente el informe en 1-2 párrafos aquí. Este resumen debe
 # describir en forma concreta los objetivos actuales. Es posible que

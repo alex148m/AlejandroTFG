@@ -4,11 +4,12 @@
 #+contributor: Domingo Gomez-Perez
 #+default-filename: weekly-progress-report.org
 
-#+TITLE: Progreso Semanal (Semana 1)
+#+TITLE: Progreso Semanal (Semana 2)
 #+AUTHOR: Alejandro Martínez Floranes
-#+DATE: 25/3/2021
+#+DATE: 31/03/2021
 
 # Todas las semanas, se tiene que crear un reporte. 
+
 
 * Resumen
 Las reglas de asociación son objetos matemáticos empleados de forma extensa en disciplinas como la minería de datos, aprendizaje automático y representación del conocimiento, entre otros campos.
@@ -22,6 +23,7 @@ aplicadas a:
 - cálculo de clausuras y retículos (lattices);
 
 Este trabajo requerirá la búsqueda y análisis de algoritmos propuestos en la literatura científica sobre los puntos anteriores.
+El lenguaje de desarrollo será Python3, encontrándose la implementación anterior en Python 2.7
 
 # Resuma brevemente el informe en 1-2 párrafos aquí. Este resumen debe
 # describir en forma concreta los objetivos actuales. Es posible que
@@ -29,7 +31,7 @@ Este trabajo requerirá la búsqueda y análisis de algoritmos propuestos en la 
 # del proyecto. 
 
 * Resultados y discusión de la semana pasada
-Discusión de como iniciar el proyecto, puntos importantes que poner en la memoria,en este caso, como realizo y porqué los test unitarios, y primera tarea a realizar: crear los test unitarios para las clases verbosity tanto de Pyhton2 como Python3
+Concretar las tres lecturas sobre hipergrafos, revisión de clase Decorator y comienzo en la mejora de la clase hypergraph.py utilizando la clase Structure de Decorator. Por ultimo, definir diferentes elemtos del latex, como el resumen, los RNF y RF, las palabras clave y el diagrama de gantt. 
 
 
 # Use esta sección para describir lo que se completó la semana
@@ -42,25 +44,14 @@ Discusión de como iniciar el proyecto, puntos importantes que poner en la memor
 
 
 
-* Estado actual
-El lenguaje de desarrollo será Python3, encontrándose la implementación anterior en Python 2.7
-En esta primera semana he consultado las diferentes referencias expuestas en el github, la charla del MIT sobre metaprogamación, otra charla de David Beazly sobre el mismo tema y por ultimo un curso de python también dirigido por David Beazly.
 
+* Estado actual
 # Describe brevemente el trabajo que se ha dedicado esta semana, entre
 # ellos literatura usada, experimentos, etc. Utilizar subsecciones
 # para organizar tu trabajo. 
-
+Finalización de la clase verbosity tanto en python2 como python3, con sus respectivos test realizados con un Makefile.
 
 * Bibliografía consultada
-Charla del MIT sobre metaprogramación
-https://missing.csail.mit.edu/2020/metaprogramming/
-
-Charla de metaprogramación por David Beazly
-https://www.youtube.com/watch?v=sPiWg5jSoZI&ab_channel=NextDayVideo
-
-Curso prático de python por David Beazly
-https://github.com/dabeaz-course/practical-python
-
 # Briefly summarize one or two papers with citations you read that are related to your work. This does not need to be more than a few sentences per paper, and does not need to be more than one or two papers unless this was a major effort for the week.
 
 # Títulos de las referencias consultadas, con un corto resumen (de dos
