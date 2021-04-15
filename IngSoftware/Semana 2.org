@@ -31,7 +31,7 @@ El lenguaje de desarrollo será Python3, encontrándose la implementación anter
 # del proyecto. 
 
 * Resultados y discusión de la semana pasada
-Concretar las tres lecturas sobre hipergrafos, revisión de clase Decorator y comienzo en la mejora de la clase hypergraph.py utilizando la clase Structure de Decorator. Por ultimo, definir diferentes elemtos del latex, como el resumen, los RNF y RF, las palabras clave y el diagrama de gantt. 
+Concretar las tres lecturas sobre hipergrafos, revisión de clase Decorator y comienzo en la mejora de la clase hypergraph.py utilizando la clase Structure de Decorator. Por ultimo, definir diferentes elementos del latex, como el resumen, los RNF y RF, las palabras clave y el diagrama de gantt. 
 
 
 # Use esta sección para describir lo que se completó la semana

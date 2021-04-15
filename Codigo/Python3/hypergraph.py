@@ -13,6 +13,7 @@ ToDo:
 (now it is following blindly the basic strategy there)
 
 """
+from decorator import Structure
 ##HACER
 ##Refactorizar metodos repetidos
 class hypergraph(Structure):
@@ -160,7 +161,7 @@ class hypergraph(Structure):
         self.hyedges = nodups
 
 if __name__ == "__main__":
-    print "slatt module hypergraph called as main and running as test"
+    print ("slatt module hypergraph called as main and running as test")
 
     h = hypergraph()
 
@@ -177,9 +178,9 @@ if __name__ == "__main__":
     h.added(set(['A','B','C']))
     h.added(set(['B','C','D']))
 
-    print "h has 8 hyedges on A, B, C, D"
-    print h.carrier
-    print h.hyedges
+    print ("h has 8 hyedges on A, B, C, D")
+    print (h.carrier)
+    print (h.hyedges)
 
 # must add testing for addhg etc
 
@@ -192,13 +193,13 @@ if __name__ == "__main__":
     h.simplify()
 #    h.simplify({'A':['B','C']})
 
-    print "h modified: added AD and simplified:"
-    print h.carrier
-    print h.hyedges
+    print ("h modified: added AD and simplified:")
+    print (h.carrier)
+    print (h.hyedges)
 
-    print "hh, a copy of h before modification:"
-    print hh.carrier
-    print hh.hyedges
+    print ("hh, a copy of h before modification:")
+    print (hh.carrier)
+    print (hh.hyedges)
 
 ##    print "hhh, an xcopy of h before modification:"
 ##    print hhh.carrier
@@ -208,35 +209,35 @@ if __name__ == "__main__":
     t = hypergraph()
     t = h.transv()
 
-    print "h again:"
-    print h.carrier
-    print h.hyedges
-    print "t, its transversal:"
-    print t.carrier
-    print t.hyedges
+    print ("h again:")
+    print (h.carrier)
+    print (h.hyedges)
+    print ("t, its transversal:")
+    print (t.carrier)
+    print (t.hyedges)
 
     h = hypergraph(set(['1','2']),[set('1'),set('2')])
 
-    print "fully changed h"
-    print h.carrier
-    print h.hyedges
+    print ("fully changed h")
+    print (h.carrier)
+    print (h.hyedges)
 
-    print "did t change as well?"
-    print t.carrier
-    print t.hyedges
+    print ("did t change as well?")
+    print (t.carrier)
+    print (t.hyedges)
 
     t = hypergraph()
     t = h.transv()
 
-    print "initialized h and its transversal"
-    print h.carrier
-    print h.hyedges
-    print t.carrier
-    print t.hyedges
+    print ("initialized h and its transversal")
+    print (h.carrier)
+    print (h.hyedges)
+    print (t.carrier)
+    print (t.hyedges)
 
-    print "another hypergraph hh on different universe"
+    print ("another hypergraph hh on different universe")
     hh = hypergraph(set(['1','2','3']),[set(['1','2']),set(['2','3'])])
-    print hh.carrier
-    print hh.hyedges
+    print (hh.carrier)
+    print (hh.hyedges)
 
 
