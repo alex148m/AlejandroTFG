@@ -144,7 +144,7 @@
   \thispagestyle{empty}
   \thispdfpagelabel{prt}
   \begin{center}
-  \includegraphics[width=29.1mm]{UC.png}\vspace{5mm}\par
+  \includegraphics[width=29.1mm]{imagenes/UC.png}\vspace{5mm}\par
   {\fuented Facultad de Ciencias}\vspace{2cm}\par
   {\fuentee \@titulo}\vspace{5mm}\par
   {\fuentec \@ingles}\vspace{2cm}\par
