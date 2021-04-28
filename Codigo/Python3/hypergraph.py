@@ -23,11 +23,16 @@ class hypergraph(Structure):
     each has a carrier (set of vertices) 
     and a list of hyperedges
     """
-
-    def __init__(self, c=set([]), l = []):
-        "initialization; default: empty carrier, empty list of hyperedges"
-        self.carrier = copy.deepcopy(c)
-        self.hyedges = [ e.copy() for e in l ]
+#Duda no se me definen ni c ni l
+    
+    _fields = [('c', set([])), ('l', []), ('carrier', c.copy()),
+               ('hyedges', [ e.copy() for e in l ] )]
+    
+##    def __init__(self, c=set([]), l = []):
+##        "initialization; default: empty carrier, empty list of hyperedges"
+##        #self.carrier = copy.deepcopy(c)
+##        self.carrier = c.copy()
+##        self.hyedges = [ e.copy() for e in l ]
 
 ##    def funct_for(a,b,elem):
 ##        for a in b:
@@ -36,7 +41,6 @@ class hypergraph(Structure):
     def addel(self,elem):
         "add one element to all the hyperedges"
         self.carrier.add(elem)
-##        self.funct_for(e,self.hyedges,elem)
         for e in self.hyedges:
             e.add(elem)
 
@@ -44,7 +48,6 @@ class hypergraph(Structure):
         "add one hyperedge ed, empty by default - ed must be a set"
         for el in ed:
             self.carrier.add(el)
-##        self.funct_for(el,ed,el)
         self.hyedges.append(ed)
 
     def addhg(self,another):
@@ -68,18 +71,19 @@ class hypergraph(Structure):
         self.hyedges = new
 
     def _xcopy(self,thecopy):
-        thecopy = copy.deepcopy(thecopy)
-        self = copy.deepcopy(self)
+##        thecopy = copy.deepcopy(thecopy)
+##        self = copy.deepcopy(self)
         "copy hypergraph onto existing one"
-##        thecopy.carrier = self.carrier.copy()
-##        thecopy.hyedges = [e.copy() for e in self.hyedges]
+        thecopy.carrier = self.carrier.copy()
+        thecopy.hyedges = [e.copy() for e in self.hyedges]
 
     def copy(self):
         "make fresh copy of hypergraph"
-##        thecopy = hypergraph()
-##        thecopy.carrier = self.carrier.copy()
-##        thecopy.hyedges = [e.copy() for e in self.hyedges]
-        return copy.deepcopy(self)
+        thecopy = hypergraph()
+        thecopy.carrier = self.carrier.copy()
+        thecopy.hyedges = [e.copy() for e in self.hyedges]
+##        return copy.deepcopy(self)
+        return thecopy
 
     def updatecarrier(self):
         "after deleting hyperedges, remove elems possibly left over in carrier"

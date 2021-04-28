@@ -1,11 +1,7 @@
 for k = 0, . . . , m − 1 do
-Add E k+1
+Add E_k+1
 Update the set of generalized nodes
-Express T r(H k g ) and E k+1 as sets of generalized nodes of level k + 1
-g
-g
-Compute T r(H k+1
-) = M in(T r(H k g ) ∨ {{v X } : v X ∈ E i+1
-})
+Express Tr(H^k_g) and E_k+1 as sets of generalized nodes of level k + 1
+Compute Tr(H^g_k+1) = Min(Tr(H^k_g) union {{v_X } : v X ∈ E^g_i+1})
 end for
-Output T r(H m )
+Output Tr(Hm)

@@ -31,7 +31,7 @@ El lenguaje de desarrollo será Python3, encontrándose la implementación anter
 # del proyecto. 
 
 * Resultados y discusión de la semana pasada
-Seguir con la mejora de la clase hypergraph.py (usando la libreria copy), desarrollar la introducción explicando los principales problemas de los hipergrafos, reglas de asociación y que es la metaprogramación. Explicar como funcionan los KD trees y que mejoras tendria en nuestra implementación de reglas de asciación.
+Seguir con la mejora de la clase hypergraph.py (usando la libreria copy), desarrollar la introducción explicando los principales problemas de los hipergrafos, reglas de asociación, que es la metaprogramación y los kd-trees. Explicar como funcionan los KD trees y que mejoras tendria en nuestra implementación de reglas de asciación.
 
 
 # Use esta sección para describir lo que se completó la semana
