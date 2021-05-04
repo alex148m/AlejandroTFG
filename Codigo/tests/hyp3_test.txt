@@ -1,0 +1,30 @@
+slatt module hypergraph called as main and running as test
+h has 8 hyedges on A, B, C, D
+{'C', 'B', 'D', 'A'}
+[{'A'}, {'B'}, {'B', 'A'}, {'C', 'B'}, {'D', 'B'}, {'C', 'D'}, {'C', 'B', 'A'}, {'C', 'D', 'B'}]
+h modified: added AD and simplified:
+{'C', 'B', 'D', 'A'}
+[{'A'}, {'B'}, {'C', 'D'}]
+hh, a copy of h before modification:
+{'C', 'B', 'D', 'A'}
+[{'A'}, {'B'}, {'B', 'A'}, {'C', 'B'}, {'D', 'B'}, {'C', 'D'}, {'C', 'B', 'A'}, {'C', 'D', 'B'}]
+h again:
+{'C', 'B', 'D', 'A'}
+[{'A'}, {'B'}, {'C', 'D'}]
+t, its transversal:
+{'C', 'B', 'D', 'A'}
+[{'A'}, {'B'}, {'B', 'A'}, {'C', 'B'}, {'D', 'B'}, {'C', 'D'}, {'C', 'B', 'A'}, {'C', 'D', 'B'}, {'D', 'A'}]
+fully changed h
+{'C', 'B', 'D', 'A'}
+[{'A'}, {'B'}, {'B', 'A'}, {'C', 'B'}, {'D', 'B'}, {'C', 'D'}, {'C', 'B', 'A'}, {'C', 'D', 'B'}, {'D', 'A'}]
+did t change as well?
+{'C', 'B', 'D', 'A'}
+[{'A'}, {'B'}, {'B', 'A'}, {'C', 'B'}, {'D', 'B'}, {'C', 'D'}, {'C', 'B', 'A'}, {'C', 'D', 'B'}, {'D', 'A'}]
+initialized h and its transversal
+{'C', 'B', 'D', 'A'}
+[{'A'}, {'B'}, {'B', 'A'}, {'C', 'B'}, {'D', 'B'}, {'C', 'D'}, {'C', 'B', 'A'}, {'C', 'D', 'B'}, {'D', 'A'}]
+{'C', 'B', 'D', 'A'}
+[{'A'}, {'B'}, {'B', 'A'}, {'C', 'B'}, {'D', 'B'}, {'C', 'D'}, {'C', 'B', 'A'}, {'C', 'D', 'B'}, {'D', 'A'}]
+another hypergraph hh on different universe
+{'C', 'B', 'D', 'A'}
+[{'A'}, {'B'}, {'B', 'A'}, {'C', 'B'}, {'D', 'B'}, {'C', 'D'}, {'C', 'B', 'A'}, {'C', 'D', 'B'}, {'D', 'A'}]

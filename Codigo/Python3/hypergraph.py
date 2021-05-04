@@ -15,28 +15,17 @@ ToDo:
 """
 from decorator import Structure
 import copy
-##HACER
-##Refactorizar metodos repetidos
 class hypergraph(Structure):
     """
     operations on hypergraphs: 
     each has a carrier (set of vertices) 
     and a list of hyperedges
     """
-#Duda no se me definen ni c ni l
     
-    _fields = [('c', set([])), ('l', []), ('carrier', c.copy()),
-               ('hyedges', [ e.copy() for e in l ] )]
-    
-##    def __init__(self, c=set([]), l = []):
-##        "initialization; default: empty carrier, empty list of hyperedges"
-##        #self.carrier = copy.deepcopy(c)
-##        self.carrier = c.copy()
-##        self.hyedges = [ e.copy() for e in l ]
-
-##    def funct_for(a,b,elem):
-##        for a in b:
-##            a.add(elem)
+    #__init__
+    c=set([])
+    l=[]
+    _fields = [('carrier', c.copy()), ('hyedges', [ e.copy() for e in l ] )]
         
     def addel(self,elem):
         "add one element to all the hyperedges"
@@ -71,19 +60,12 @@ class hypergraph(Structure):
         self.hyedges = new
 
     def _xcopy(self,thecopy):
-##        thecopy = copy.deepcopy(thecopy)
-##        self = copy.deepcopy(self)
         "copy hypergraph onto existing one"
-        thecopy.carrier = self.carrier.copy()
-        thecopy.hyedges = [e.copy() for e in self.hyedges]
+        thecopy = copy.deepcopy(thecopy)
 
     def copy(self):
         "make fresh copy of hypergraph"
-        thecopy = hypergraph()
-        thecopy.carrier = self.carrier.copy()
-        thecopy.hyedges = [e.copy() for e in self.hyedges]
-##        return copy.deepcopy(self)
-        return thecopy
+        return copy.deepcopy(self)
 
     def updatecarrier(self):
         "after deleting hyperedges, remove elems possibly left over in carrier"
