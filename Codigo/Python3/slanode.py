@@ -34,6 +34,17 @@ import copy
 
 class slanode(frozenset):
 
+    def str2node(string=""):
+        st1 = auxitset(string)
+        st2 = slanode(st1)
+        st2.setsupp(st1.supp)
+        return st2
+
+    def set2node(st=set([]),spp=0):
+        st2 = slanode(st)
+        st2.setsupp(spp)
+        return st2
+
     def __new__(cls, contents=[], supp=0, mxs=-1, mns=-1, gmxs=-1):
         cont = contents
         if isinstance(contents, str):

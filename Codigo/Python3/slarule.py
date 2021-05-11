@@ -20,12 +20,18 @@ ToDo:
 """
 
 
-from slanode import slanode, str2node
+from slanode import slanode
 from verbosity import verbosity
+from decorator import Structure
 
-class slarule:
+class slarule(Structure):
     "itset pair to be used as a rule or implication"
-
+    #__init__
+##    a,c
+###duda funcionamiento
+##    _fields=[('a'),('c'),('vb',None),('an',a),('cn',c),('widthval',-1),('wdn',-1)
+##             ,('wup',-1),('apprwidthval',-1),('confval',-1)]
+    
     def __init__(self,a,c,vb=None):
         """
         vb verbosity object for errmessg's
@@ -60,9 +66,9 @@ class slarule:
         if self.confval >= 0:
             return self.confval
         ##no hace falta comparar con 0
-        if self.an.supp == 0:
+        if self.an.supp:
             "will raise shortly a zero-division exception"
-            self.v.errmessg("Unexpected zero support for"+str(self.an))
+            #self.v.errmessg("Unexpected zero support for"+str(self.an))
         self.confval = float(self.cn.supp)/self.an.supp
         return self.confval
 
@@ -79,9 +85,9 @@ class slarule:
         self.wdn = 0
         self.wup = 0
         self.widthval = 0
-        if self.an.supp == 0:
+        if self.an.supp :
             "will raise shortly a zero-division exception"
-            self.v.errmessg("Unexpected zero support for"+str(self.an))
+            #self.v.errmessg("Unexpected zero support for"+str(self.an))
         if self.an.supp < nrtr or nrtr==0:
             "must rethink this part"
             self.wdn = float(self.an.mns)/self.an.supp
@@ -135,7 +141,7 @@ def printrules(dic,nrtr,outfile=None,trad={},reflex=False,confbound=0.0,doprint=
                     if r.conf() >= confbound:
                         cnt += 1
                         if doprint:
-                            if not outfile: print r.outstr(nrtr,trad)
+                            if not outfile: print(r.outstr(nrtr,trad))
                             else: outfile.write(r.outstr(nrtr,trad)+"\n")
 # OPTION: NO SUPP/CONF VALUES:
 #                            else: outfile.write(str(r)+"\n")
@@ -144,7 +150,7 @@ def printrules(dic,nrtr,outfile=None,trad={},reflex=False,confbound=0.0,doprint=
 
 if __name__=="__main__":
 
-    print "slatt module slarule called as main and running as test..."
+    print("slatt module slarule called as main and running as test...")
 
     an = slanode(["a","b"])
 
@@ -161,6 +167,6 @@ if __name__=="__main__":
 
     r = slarule(an,cn)
 
-    print r, ";   s:%3d,  c:%2.2f,  w:%2.2f" % (r.supp(),r.conf(),r.width())
+    print(r, ";   s:%3d,  c:%2.2f,  w:%2.2f" % (r.supp(),r.conf(),r.width()))
 
 

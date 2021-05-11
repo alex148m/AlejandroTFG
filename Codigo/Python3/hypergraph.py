@@ -25,39 +25,64 @@ class hypergraph(Structure):
     #__init__
     c=set([])
     l=[]
-    _fields = [('carrier', c.copy()), ('hyedges', [ e.copy() for e in l ] )]
-        
+    _fields = [('c', set([])),('l', []), ('carrier', c.copy()),
+               ('hyedges', [ e.copy() for e in l ] )]
+
+    def decorator(self,a1,a2,a3,a4,a5):
+        if a1:
+            a1()
+        for e in a2:
+            a3(e)
+        if a4:
+            a4(a2)
+        if a5:
+            a5()
+
     def addel(self,elem):
-        "add one element to all the hyperedges"
-        self.carrier.add(elem)
-        for e in self.hyedges:
-            e.add(elem)
+        self.decorator(self.carrier.add(elem),self.hyedges,lambda e: e.add(elem),None,None)
+        
+##    def addel(self,elem):
+##        "add one element to all the hyperedges"
+##        self.carrier.add(elem)
+##        for e in self.hyedges:
+##            e.add(elem)
+    
 
     def added(self,ed=set([])):
-        "add one hyperedge ed, empty by default - ed must be a set"
-        for el in ed:
-            self.carrier.add(el)
-        self.hyedges.append(ed)
+        self.decorator(None,ed,lambda el: self.carrier.add(el),
+                       lambda ed: self.hyedges.append(ed),None)
+        
+##    def added(self,ed=set([])):
+##        "add one hyperedge ed, empty by default - ed must be a set"
+##        for el in ed:
+##            self.carrier.add(el)
+##        self.hyedges.append(ed)
 
     def addhg(self,another):
         "union of two hypergraphs into the first one"
-        for e in another.hyedges:
-            self.added(e)
+        self.decorator(None,another.hyedges,lambda e: self.added(e),None,None)
+        
+##        for e in another.hyedges:
+##            self.added(e)
 
     def remel(self,elem):
         "remove element from all hyperedges where it belongs"
-        for e in self.hyedges:
-            if elem in e:
-                e.remove(elem)
+        self.decorator(None,self.hyedges,lambda e: e.remove(elem) if elem in e else None,None,None)
+        
+##        for e in self.hyedges:
+##            if elem in e:
+##                e.remove(elem)
 
     def remed(self,elem):
         "remove all hyperedges where the element appears"
         new = []
-        for e in self.hyedges:
-            if not elem in e:
-                new.append(e)
-        del self.hyedges
-        self.hyedges = new
+        self.decorator(None,self.hyedges,lambda e: new.append(e) if not elem in e else None ,del self.hyedges,self.hyedges = new)
+##        new = []
+##        for e in self.hyedges:
+##            if not elem in e:
+##                new.append(e)
+##        del self.hyedges
+##        self.hyedges = new
 
     def _xcopy(self,thecopy):
         "copy hypergraph onto existing one"
