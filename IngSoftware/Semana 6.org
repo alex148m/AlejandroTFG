@@ -4,12 +4,11 @@
 #+contributor: Domingo Gomez-Perez
 #+default-filename: weekly-progress-report.org
 
-#+TITLE: Progreso Semanal (Semana ##)
+#+TITLE: Progreso Semanal (Semana 1)
 #+AUTHOR: Alejandro Martínez Floranes
-#+DATE: 12/05/2021
+#+DATE: 19/05/2021
 
 # Todas las semanas, se tiene que crear un reporte. 
-
 
 * Resumen
 Las reglas de asociación son objetos matemáticos empleados de forma extensa en disciplinas como la minería de datos, aprendizaje automático y representación del conocimiento, entre otros campos.
@@ -23,14 +22,14 @@ aplicadas a:
 - cálculo de clausuras y retículos (lattices);
 
 Este trabajo requerirá la búsqueda y análisis de algoritmos propuestos en la literatura científica sobre los puntos anteriores.
-El lenguaje de desarrollo será Python3, encontrándose la implementación anterior en Python 2.7
 
 # Resuma brevemente el informe en 1-2 párrafos aquí. Este resumen debe
 # describir en forma concreta los objetivos actuales. Es posible que
 # quieras vincular a un archivo de proyecto que describe los objetivos
 # del proyecto. 
+
 * Resultados y discusión de la semana pasada
-Lectura del apartado 7 del paper "Identifying the Minimal Transversals of a Hypergraph and Related Problems", correción del método decorator en la clase hipergraph, acabar las clases slarule y slanode en python3.
+
 
 
 # Use esta sección para describir lo que se completó la semana
@@ -43,15 +42,16 @@ Lectura del apartado 7 del paper "Identifying the Minimal Transversals of a Hype
 
 
 
-
 * Estado actual
+
+
 # Describe brevemente el trabajo que se ha dedicado esta semana, entre
 # ellos literatura usada, experimentos, etc. Utilizar subsecciones
 # para organizar tu trabajo. 
-Empezando a mejorar las clases slarule y slanode, con el uso del patron de diseño de la clase Structure.
 
 
 * Bibliografía consultada
+
 # Briefly summarize one or two papers with citations you read that are related to your work. This does not need to be more than a few sentences per paper, and does not need to be more than one or two papers unless this was a major effort for the week.
 
 # Títulos de las referencias consultadas, con un corto resumen (de dos

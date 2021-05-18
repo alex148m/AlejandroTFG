@@ -76,7 +76,8 @@ class hypergraph(Structure):
     def remed(self,elem):
         "remove all hyperedges where the element appears"
         new = []
-        self.decorator(None,self.hyedges,lambda e: new.append(e) if not elem in e else None ,del self.hyedges,self.hyedges = new)
+        self.decorator(None,self.hyedges,lambda e: new.append(e) if not elem in e else None, None,None)
+        self.hyedges = new
 ##        new = []
 ##        for e in self.hyedges:
 ##            if not elem in e:

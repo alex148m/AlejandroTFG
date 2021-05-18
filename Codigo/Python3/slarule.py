@@ -27,26 +27,8 @@ from decorator import Structure
 class slarule(Structure):
     "itset pair to be used as a rule or implication"
     #__init__
-##    a,c
-###duda funcionamiento
-##    _fields=[('a'),('c'),('vb',None),('an',a),('cn',c),('widthval',-1),('wdn',-1)
-##             ,('wup',-1),('apprwidthval',-1),('confval',-1)]
-    
-    def __init__(self,a,c,vb=None):
-        """
-        vb verbosity object for errmessg's
-        """
-        if vb != None:
-            self.v = vb
-        else:
-            self.v = verbosity()
-        self.an = a
-        self.cn = c
-        self.widthval = -1
-        self.wdn = -1
-        self.wup = -1
-        self.apprwidthval = -1
-        self.confval = -1
+    _fields=[('a'),('c'),('v',verbosity()),('an',lambda a: a,"a"),('cn',lambda c: c,"c"),('widthval',-1),('wdn',-1)
+             ,('wup',-1),('apprwidthval',-1),('confval',-1)]
 
     def supp(self,nrtr=0):
         if nrtr == 0:
@@ -66,9 +48,9 @@ class slarule(Structure):
         if self.confval >= 0:
             return self.confval
         ##no hace falta comparar con 0
-        if self.an.supp:
+        if not self.an.supp:
             "will raise shortly a zero-division exception"
-            #self.v.errmessg("Unexpected zero support for"+str(self.an))
+            self.v.errmessg(f"Unexpected zero support for {self.an}")
         self.confval = float(self.cn.supp)/self.an.supp
         return self.confval
 
@@ -85,16 +67,16 @@ class slarule(Structure):
         self.wdn = 0
         self.wup = 0
         self.widthval = 0
-        if self.an.supp :
+        if not self.an.supp:
             "will raise shortly a zero-division exception"
-            #self.v.errmessg("Unexpected zero support for"+str(self.an))
+            self.v.errmessg(f"Unexpected zero support for {self.an}")
         if self.an.supp < nrtr or nrtr==0:
             "must rethink this part"
             self.wdn = float(self.an.mns)/self.an.supp
             self.widthval = self.wdn
-        if self.cn.mxs != 0:
+        if self.cn.mxs:
             self.wup = float(self.cn.supp)/self.cn.mxs
-            if self.widthval == 0:
+            if not self.widthval:
                 self.widthval = self.wup
             else:
                 self.widthval = min(self.wup,self.wdn)
@@ -141,11 +123,12 @@ def printrules(dic,nrtr,outfile=None,trad={},reflex=False,confbound=0.0,doprint=
                     if r.conf() >= confbound:
                         cnt += 1
                         if doprint:
-                            if not outfile: print(r.outstr(nrtr,trad))
+                            if not outfile: print (r.outstr(nrtr,trad))
                             else: outfile.write(r.outstr(nrtr,trad)+"\n")
 # OPTION: NO SUPP/CONF VALUES:
 #                            else: outfile.write(str(r)+"\n")
         return cnt
+
 
 
 if __name__=="__main__":
