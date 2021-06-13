@@ -1,22 +1,32 @@
 from corr import corr
 from slarule import slarule
-from slanode import str2node
+#from slanode import str2node
+import slanode
+import itertools import combinations
 
 ## allsubsets is being moved s/w else - remove from here
 
 def allsubsets(givenset):
     "construct powerset of aset, list of all subsets"
-    aset = givenset.copy()
-    for e in aset:
-        aset.remove(e)
-        p = allsubsets(aset)
-        q = []
-        for st in p:
-            s = st.copy()
-            s.add(e)
-            q.append(s)
-        return p+q
-    return [ set([]) ]
+    # aset = givenset.copy()
+    # for e in aset:
+    #     aset.remove(e)
+    #     p = allsubsets(aset)
+    #     q = []
+    #     for st in p:
+    #         s = st.copy()
+    #         s.add(e)
+    #         q.append(s)
+    #     return p+q
+    # return [ set([]) ]
+    s = len(givenset)
+    q=[]
+    for i in range(s):
+        for e in combinations(givenset,i):
+            q.append(e)
+    return q
+
+
 
 class cboost:
 
@@ -33,8 +43,10 @@ class cboost:
             for an in self.ants[cn]:
                 goodsofar = True
                 conf1 = float(cn.supp)/an.supp
-                for cn2 in rrseconf.keys():
-                    for an2 in rrseconf[cn2]:
+                for cn2,values in rrseconf.items():
+                    for an2 in values:
+                # for cn2 in rrseconf.keys():
+                #     for an2 in rrseconf[cn2]:
                         if cn.difference(an) <= cn2 and an2 <= an:
                             totry = allsubsets(set(an.difference(an2)))
                             for ss in totry:
@@ -68,17 +80,17 @@ if __name__=="__main__":
 
     rl = rerulattice(supp,filename)
 
-    print "Iteration-free basis:"
+    print ("Iteration-free basis:")
 
-    print printrules(rl.mingens,rl.nrtr)
+    print (printrules(rl.mingens,rl.nrtr))
 
     conf = 0.75
 
     RR = rl.mineRR(supp,conf)
 
-    print "At confidence", conf
+    print ("At confidence", conf)
 
-    print printrules(RR,rl.nrtr)
+    print (printrules(RR,rl.nrtr))
 
     cb = cboost(RR)
 
@@ -88,12 +100,12 @@ if __name__=="__main__":
 
     RR2 = rl.mineRR(supp,seconf)
 
-    print "At confidence", seconf
+    print ("At confidence", seconf)
 
-    print printrules(RR2,rl.nrtr)
+    print (printrules(RR2,rl.nrtr))
 
-    print "At cboost", boost
+    print ("At cboost", boost)
 
     a0 = cb.filt(1.4,rl,RR2)
 
-    print printrules(a0,rl.nrtr)
+    print (printrules(a0,rl.nrtr))
