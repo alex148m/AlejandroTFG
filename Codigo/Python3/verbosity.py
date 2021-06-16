@@ -52,9 +52,7 @@ class verbosity(Structure):
             self.count = 0
 
     def __str__(self):
-        return 'Verbosity: {0}\nLimit: {1}\nCount: {2}\n'.format(self.verb,
-                                                                   self.lim,
-                                                                     self.count)
+        return 'Verbosity: {0}\nLimit: {1}\nCount: {2}\n'.format(self.verb,self.lim,self.count)
 
 if __name__=="__main__":
     v = verbosity()

@@ -43,16 +43,16 @@ class rerulattice(slattice):
     def dump_hist_RR(self):
         "prints out all the representative bases computed so far"
         for e in self.hist_RR.keys():
-            print "At support", (e[0]+0.0)/self.scale,
-            print "and confidence", (e[1]+0.0)/self.scale
-            print self.hist_RR[e]
+            print ("At support", (e[0]+0.0)/self.scale,)
+            print ("and confidence", (e[1]+0.0)/self.scale)
+            print (self.hist_RR[e])
 
     def dump_hist_KrRR(self):
         "prints out all the bases computed so far"
         for e in self.hist_KrRR.keys():
-            print "At support", (e[0]+0.0)/self.scale,
-            print "and confidence", (e[1]+0.0)/self.scale
-            print self.hist_KrRR[e]
+            print ("At support", (e[0]+0.0)/self.scale,)
+            print ("and confidence", (e[1]+0.0)/self.scale)
+            print (self.hist_KrRR[e])
 
     def mineRR(self,suppthr,confthr,forget=False):
         """
@@ -122,7 +122,7 @@ class rerulattice(slattice):
                 for m in self._faces(nod,nonants[nod]).transv().hyedges:
                     if m < nod:
                         mm = self._findinmingens(nod,m)
-                        if mm==None: print m, "not found at", nod
+                        if mm==None: print (m, "not found at", nod)
                         ants[nod].append(mm)
         self.v.zero(500)
         self.v.messg("...checking valid antecedents...")
@@ -151,20 +151,20 @@ if __name__ == "__main__":
     rl = rerulattice(supp,filename)
     
 ##    print printrules(rl.mingens,rl.nrtr,file(filename+"_IFrl30s.txt","w")), "rules in the iteration free basis."
-    print printrules(rl.mingens,rl.nrtr), "rules in the iteration free basis."
+    print (printrules(rl.mingens,rl.nrtr), "rules in the iteration free basis.")
 
     rl.findGDgens()
 
 ##    print printrules(rl.GDgens,rl.nrtr,file(filename+"_GDrl30s.txt","w")), "rules in the GD basis."
-    print printrules(rl.GDgens,rl.nrtr), "rules in the GD basis."
+    print (printrules(rl.GDgens,rl.nrtr), "rules in the GD basis.")
 
     ccc = 0.81
     
     KrRRants = rl.mineKrRR(supp,ccc)
 
-    print printrules(KrRRants,rl.nrtr), "repr rules found with Kr at conf", ccc
+    print (printrules(KrRRants,rl.nrtr), "repr rules found with Kr at conf", ccc)
 
     RRants = rl.mineRR(supp,ccc)
 
 ##    print printrules(RRants,rl.nrtr,file(filename+"_RR"+str(ccc)+"c30s.txt","w")), "repr rules found at conf..."
-    print printrules(RRants,rl.nrtr), "repr rules found at conf", ccc
+    print (printrules(RRants,rl.nrtr), "repr rules found at conf", ccc)

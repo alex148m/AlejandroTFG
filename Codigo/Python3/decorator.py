@@ -61,7 +61,7 @@ class Structure(metaclass=StructMeta):
                     # If there are not present, we use the ones defined in
                     # _fields
                     parameters = [kwargs[n] if n in kwargs else dict_names[n]
-                                  for n in f[2]]
+                                for n in f[2]]
                     kwargs[f[0]] = f[1](*parameters)
                 elif f[0] not in kwargs:
                     kwargs[f[0]] = f[1]

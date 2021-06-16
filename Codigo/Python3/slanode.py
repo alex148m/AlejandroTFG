@@ -31,6 +31,17 @@ ToDo:
 
 import copy
 
+def str2node(string=""):
+    st1 = auxitset(string)
+    st2 = slanode(st1)
+    st2.setsupp(st1.supp)
+    return st2
+
+def set2node(st=set([]), spp=0):
+    st2 = slanode(st)
+    st2.setsupp(spp)
+    return st2
+
 
 class slanode(frozenset):
 
@@ -40,7 +51,7 @@ class slanode(frozenset):
         st2.setsupp(st1.supp)
         return st2
 
-    def set2node(st=set([]),spp=0):
+    def set2node(st=set([]), spp=0):
         st2 = slanode(st)
         st2.setsupp(spp)
         return st2
@@ -82,15 +93,11 @@ class slanode(frozenset):
         '''
         Return a copy, changing the contents of the node
         '''
-        return copy.deepcopy(slanode(contents=c,
-                                     supp=self.supp,
-                                     mxs=self.mxs,
-                                     mns=self.mns,
-                                     gmxs=self.gmxs))
+        return copy.deepcopy(slanode(contents=c,supp=self.supp,mxs=self.mxs,mns=self.mns,gmxs=self.gmxs))
 
     def copy(self):
         return copy.deepcopy(self)
 
-if __name__=="__main__":
+if __name__ =="__main__":
     "some little testing needed here"
     pass

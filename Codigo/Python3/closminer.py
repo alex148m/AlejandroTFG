@@ -363,18 +363,18 @@ class closminer(Structure):
         return items
 
 
-# if __name__=="__main__":
+if __name__=="__main__":
 
-#     dsfnm = "e13"
-#     supp = 0.001
-# ##    dsfnm = "pumsb_star"
-# ##    supp = 0.7
-# ##    dsfnm = "lenses_recoded"
-# ##    supp = 0.1
+    dsfnm = "e13"
+    supp = 0.001
+    # dsfnm = "pumsb_star"
+    # supp = 0.7
+    # dsfnm = "lenses_recoded"
+    # supp = 0.1
 
 
-#     c = closminer(supp,dsfnm,xmlinput=True)
+    c = closminer(supp,dsfnm,xmlinput=True)
 
-#     print c.closeds
+    print (c.closeds)
 
-#     c.xmlize()
+    c.xmlize()

@@ -2,23 +2,12 @@ from corr import corr
 from slarule import slarule
 #from slanode import str2node
 import slanode
-import itertools import combinations
+from itertools import combinations
 
 ## allsubsets is being moved s/w else - remove from here
 
 def allsubsets(givenset):
     "construct powerset of aset, list of all subsets"
-    # aset = givenset.copy()
-    # for e in aset:
-    #     aset.remove(e)
-    #     p = allsubsets(aset)
-    #     q = []
-    #     for st in p:
-    #         s = st.copy()
-    #         s.add(e)
-    #         q.append(s)
-    #     return p+q
-    # return [ set([]) ]
     s = len(givenset)
     q=[]
     for i in range(s):

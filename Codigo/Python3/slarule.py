@@ -20,15 +20,14 @@ ToDo:
 """
 
 
-from slanode import slanode
+from slanode import slanode, str2node
 from verbosity import verbosity
 from decorator import Structure
 
 class slarule(Structure):
     "itset pair to be used as a rule or implication"
     #__init__
-    _fields=[('a'),('c'),('v',verbosity()),('an',lambda a: a,"a"),('cn',lambda c: c,"c"),('widthval',-1),('wdn',-1)
-             ,('wup',-1),('apprwidthval',-1),('confval',-1)]
+    _fields=[('a'),('c'),('v',verbosity()),('an',lambda a: a,"a"),('cn',lambda c: c,"c"),('widthval',-1),('wdn',-1),('wup',-1),('apprwidthval',-1),('confval',-1)]
 
     def supp(self,nrtr=0):
         if nrtr == 0:

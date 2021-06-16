@@ -1,0 +1,31 @@
+<?xml version="1.0" ?>
+<xmlclosurespace>
+	<context>
+		<parameters filename="e13" support="0.1%"/>
+	</context>
+	<closures>
+		<closure card="0" hashcode="133156838395276" support="13"/>
+		<closure card="1" hashcode="-1475720110065259131" support="11">
+			<item value="b"/>
+		</closure>
+		<closure card="1" hashcode="-1305064881317614714" support="10">
+			<item value="a"/>
+		</closure>
+		<closure card="2" hashcode="3138257626259684061" support="9">
+			<item value="a"/>
+			<item value="b"/>
+		</closure>
+		<closure card="1" hashcode="28792140398407580" support="6">
+			<item value="c"/>
+		</closure>
+		<closure card="2" hashcode="5626368658362320371" support="5">
+			<item value="b"/>
+			<item value="c"/>
+		</closure>
+		<closure card="3" hashcode="7014780955557851169" support="4">
+			<item value="a"/>
+			<item value="b"/>
+			<item value="c"/>
+		</closure>
+	</closures>
+</xmlclosurespace>

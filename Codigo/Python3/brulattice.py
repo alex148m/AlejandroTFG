@@ -36,9 +36,9 @@ class brulattice(clattice):
     def dump_hist_Bstar(self):
         "prints out all the Bstar bases computed so far"
         for e in self.hist_Bstar.keys():
-            print "At support", (e[0]+0.0)/self.scale,
-            print "and confidence", (e[1]+0.0)/self.scale
-            print self.hist_Bstar[e]
+            print ("At support", (e[0]+0.0)/self.scale,)
+            print ("and confidence", (e[1]+0.0)/self.scale)
+            print (self.hist_Bstar[e])
 
     def mineBstar(self,suppthr,confthr,forget=False,cboobd=0):
         """
@@ -142,7 +142,7 @@ if __name__ == "__main__":
     ccc = 0.7
     cbb = 1.05
     b = rl.mineBstar(supp,ccc,cboobd=cbb)
-    print "\n", printrules(b,rl.nrtr)
+    print ("\n", printrules(b,rl.nrtr))
 
     
 ##    for ccc in [0.7,0.75,0.8]:
