@@ -29,7 +29,7 @@ Este trabajo requerirá la búsqueda y análisis de algoritmos propuestos en la 
 # del proyecto. 
 
 * Resultados y discusión de la semana pasada
-cambio cboost,numero lineas distintas p3 o p2,  reglas de amstrong, mirar codigo hypergrapgh.py tambien, (4 hojas por capitulo + la blanca), entrega de primera version el dia 21, capitulo de conclusiones(1 o 2 hojas).
+cambio cboost,numero lineas distintas p3 a p2,  reglas de amstrong, mirar codigo hypergrapgh.py tambien, (4 hojas por capitulo + la blanca), entrega de primera version el dia 21, capitulo de conclusiones(1 o 2 hojas).
 
 
 
@@ -44,7 +44,12 @@ cambio cboost,numero lineas distintas p3 o p2,  reglas de amstrong, mirar codigo
 
 
 * Estado actual
-Meter todo lo que he hecho (sin detalles)
+Capitulo 1.- explicaiones reglas de asociacion, metodologia y requisitos y diagrama UML y GANTT
+Capitulo 2.- charla de metaprogramación y explicación de la metaprogramación
+Capitulo 3.- hipergrafos y problemas relacionados (explicacón teorica)
+Capitulo 4.- KD trees explicaión teorica y relación con las reglas de asociación
+Capitulo 5.- Metodologia de desarrollo, diferencias entre las versiones de python y cambios realizados en el código
+Capitulo 6.- conclusiones
 
 
 # Describe brevemente el trabajo que se ha dedicado esta semana, entre
