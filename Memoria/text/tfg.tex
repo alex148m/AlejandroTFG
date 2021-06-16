@@ -17,6 +17,7 @@
 \usepackage{listings}
 \usepackage{xcolor}
 \usepackage{amssymb}
+\usepackage{multirow}
 
 \definecolor{codegreen}{rgb}{0,0.6,0}
 \definecolor{codegray}{rgb}{0.5,0.5,0.5}
@@ -154,7 +155,7 @@ Para la realización del proyecto se ha utilizado una metodología incremental, 
                     % en la posición señalada, en vez de al
                     % comienzo de una página.
 \begin{center}
-\includegraphics[width=.6\linewidth]{imagenes/Metodologia.png}
+\includegraphics[width=.7\linewidth]{imagenes/Metodologia.png}
 \end{center}
 \caption{Metodología iterativa incremental}
 \label{fig_pro}
@@ -181,16 +182,31 @@ RF04         & La refactorización de l         \\ \hline
 \begin{tabular}{|l|l|}
 \hline
 Identificador & Descripción                              \\ \hline
-RFN01         & La aplicación deberá tener la misma funcionalidad tanto en python2 como en python3                                          \\ \hline
-RFN02          & La mejora en python3 deberá ser mas eficiente que la de su anterior versión                                                  \\ \hline
-RFN03          & La mejora en python3 deberá tener menos lineas de código que su anterior versión                                         \\ \hline
-RFN04          & La refactorización de los métodos no supondrá un cambio en los resultados                                               \\ \hline
+RNF01         & La aplicación deberá tener la misma funcionalidad tanto en python2 como en python3                                          \\ \hline
+RNF02          & La mejora en python3 deberá ser mas eficiente que la de su anterior versión                                                  \\ \hline
+RNF03          & La mejora en python3 deberá tener menos lineas de código que su anterior versión                                         \\ \hline
+RNF04          & La refactorización de los métodos no supondrá un cambio en los resultados                                               \\ \hline
 \end{tabular}
 \caption{Requisitos no funcionales del proyecto}
 \label{tab:my-table}
 \end{table}
 
 \newpage
+
+\section{Diagrama de clases UML}
+En este apartado indico el diagrama de clases UML inicial de Slatt escrito en pyhton2 y el resultado final del proyecto al reescribirlo a python3 con las nuevas clases, herencias, etc.
+
+\begin{figure}[ht!] % [h!] fuerza que el elemento se sitúe
+                    % en la posición señalada, en vez de al
+                    % comienzo de una página.
+\begin{center}
+\includegraphics[width=1.45\linewidth]{imagenes/Diagrama en blanco - Clase UML (1).png}
+\end{center}
+\caption{Diagrama de clases UML Versión Python2}
+\label{fig_pro}
+\end{figure}
+
+
 
 \chapter{\emph{Metaprogramación}}
 
@@ -225,7 +241,7 @@ La metaprogramación se base en estos conceptos principales:
 
 En conclusión la metaprogramación es la programación que utiliza los programas como datos y permite modificar su propia estructura. \citep{silva2018metaprogramacion}
 
-\section{Charla metaprogramación David Bleazley}
+\section{Metaprogramación}
 
 David Bleazley en esta charla explica uno de los grandes cambios que existen en Python3 respecto de Python2, la metaprogramación.\citep{David}
 
@@ -361,9 +377,46 @@ $RR_\tau,_\gamma=\{r \in AR_\tau,_\gamma \;|\; \nexists \; r′ \in AR_\tau, \;|
 
 Con esta definición de regla representativa no redundante podemos conseguir una cantidad de reglas de asociación menor con un mismo valor de contenido, es decir, nos ahorraríamos mucho espacio en una base de datos gracias a esta definición de regla representativa.
 
+\section{Axiomas de Armstrong}
 
+Los Axiomas de Armstrong son en su esencia reglas de inferencia mencionadas anteriormente.
+Estas reglas permiten deducir todas las dependencias funcionales que tienen
+lugar entre un conjunto dado de atributos $A=\{A_1,A_2,...,A_n\}$ , como consecuencia de las dependencias dadas, es decir, se deducen todas las dependencias que se asumen ciertas a partir del conocimiento del problema.
 
+\subsection{Ejemplo de axiomas de Armstrong}
+Tenemos una relación R con tres atributos (A,B,C), ahora, después de realizar la función de dependencias, nos devuelve las dos siguientes reglas $F = \{A \rightarrow B , \; B \rightarrow C\}$, con estas dos reglas podemos inferir el conjunto completo de funciones de dependencias que serian: $\{ A \rightarrow C , A \rightarrow A , B \rightarrow B , C \rightarrow C ,\}$.
 
+Ahora tenemos un set F con las dos reglas de dependencias y un superset $F^+$ el cual es un set de funciones lógicamente inferidas de F. A continuación, muestro una tabla de la relación entre el numero de atributos combinados y las posibles keys que podemos elegir.
+
+\begin{table}[h]
+\begin{tabular}{|l|l|l|l|}
+\hline
+                               & \multicolumn{3}{l|}{\# de atributos combinados} \\ \hline
+\multirow{4}{*}{Posibles keys} & 1              & 2               & 3                \\ \cline{2-4} 
+                               & A              & AB              & ABC              \\ \cline{2-4} 
+                               & B              & AC              &                  \\ \cline{2-4} 
+                               & C              & BC              &                  \\ \hline
+Total                          & 3              & 3               & 1                \\ \hline
+\end{tabular}
+\end{table}
+
+En este caso es sencillo debido a que únicamente tenemos 3 atributos posibles, pero en el caso que por ejemplo tengamos un numero elevado de ellos A = 100 se puede utilizar una formula matemática que calcula el numero de posibilidades $\frac{n!}{(n-r)! (r)!}$ donde r es número total de atributos y n cuantos atributos por key tenemos.
+
+Una vez tenemos esto necesitamos un mecanismo que nos permita conocer si las reglas de dependencia están dentro o fuera del $F^+$, es entonces cuando utilizamos los axiomas de Armstrong.
+
+Para ello primero definiré que es un axioma, según la tercera definición del diccionario, un axioma es una proposición que se asume sin prueba, con el fin de estudiar las consecuencias que se derivan de ella. Los axiomas de armstrong tienen tres acciones reflexividad, aumentatividad y transitividad, que son en términos matemáticos definidas de la siguiente manera:
+
+\begin{enumerate}
+    \item \textbf{Reflexividad} $\forall X , X \rightarrow X $ $ex. (ABC \rightarrow AB)$
+    
+    \item \textbf{Aumentatividad} $\{ X \rightarrow Y , Z \supseteq X \} \Rightarrow Z \rightarrow Y  $ $ex. (AC \rightarrow CB)$
+    
+    \item \textbf{Transitividad} $ \{ X\rightarrow Z , Z \rightarrow Y \} \Rightarrow X \rightarrow Y $ $ex. (A \rightarrow B , B \rightarrow C) \Rightarrow (A \rightarrow C)$
+\end{enumerate}
+
+Si tenemos en $F^+$ un set de todas las funciones con dependencias las cuales hemos inferido de F, si aplicamos las acciones de armstrong a F no vamos a encontrar ningún set de funciones con dependencias fuera de F solo podremos encontrar estas funciones dentro de F.
+
+otro aspecto de los axiomas de armstrong es que es completo esto quiere decir que si aplicamos acciones de armstrong a F vamos a encontrar todas las funciones con dependencias existentes en dicho set.
 
 
 
@@ -424,7 +477,10 @@ Ejemplo gráfico de un KD-tree para el siguiente ItemSet:
 Desde un punto de vista geométrico como se ve en la Ilustración \ref{arbol_kd}, cada nodo del kd tree hace una partición del plano en dos “subplanos”. En la Ilustración \ref{grafica_kd} todos los puntos en el “subplano” de la izquierda corresponden al subárbol izquierdo del nodo raíz, y los que quedan a la derecha son los puntos del subárbol derecho.
 
 
-\chapter{\emph{Metodología test unitarios}}
+\chapter{\emph{Desarrollo Software}}
+En este aparatado del proyecto se muestran que cambios han sido necesarios en el código para la correcta ejecución de Slatt pasando todo su código de python2 a python3, los test necesarios para su correcto funcionamiento y además se explica que mejoras se han llevado a cabo tanto de rendimiento, como en la reducción del número de lineas de código.
+
+\section{Test unitarios}
 
 En esta sección se especifica como se realizan los test unitarios, para comprobar si las dos versiones del código mantienen la misma funcionalidad basándose en la salida de estos test.
 
@@ -433,6 +489,127 @@ En esta sección se especifica como se realizan los test unitarios, para comprob
 \lstinputlisting[language=bash,caption=\textbf{Makefile},frame=bottom]{codigo/makefile}
 
 Utilizando este \textbf{makefile} se realiza una ejecución simultanea de ambas versiones, guardando dicha salida en un fichero.txt y a continuación, se hace un \textbf{diff} entre los dos archivos, en el caso en el que el \textbf{diff} devuelva un archivo vacío, sabremos que las dos versiones tienen la misma funcionalidad.
+
+\section{Mejoras del código}
+En esta sección se va a discutir cuales han sido los cambios y mejoras en cada una de las clases que se han modificado en el código:
+
+\subsection{Diferencias entre python2 y python3}
+
+En la actualidad, existen dos tipos de versiones de python, las cuales son 2.x en la que está inicialmente escrita Slatt y 3.x en la cual se ha estado desarrollado este proyecto.
+
+Las principales diferencias que he encontrado en el proyecto han sido las siguientes \citep{diferencias}:
+
+\begin{enumerate}
+    \item \textbf{Sentencia print}
+    
+    Esta posiblemente sea la diferencia que más veces ha aparecido en el proyecto, ya que en prácticamente todas y cada una de las clases aparece algún print en el main o en algún método de la propia clase.
+    Se soluciona de una manera muy sencilla, añadiendo el el argumento de la sentencia print dos paréntesis. (print \textbf{x} --> print( \textbf{x} ))
+    
+    \item \textbf{Comparación de tipos}
+    
+    En \textbf{pyhton2} se permiten las comparaciones entre objetos de distintos tipos, mientras que en \textbf{python3} nos lanza una excepción del tipo \textit{TypeError}, esto a sido necesario tenerlo en cuanta en el código porque había bastantes comparaciones de tipos distintos a lo largo del código en clase como brulattice.py o closminer.py.
+    
+    \item \textbf{División de números enteros}
+    
+    En \textbf{python2} la división entre números enteros da un numero entero y si quieres conseguir un resultado con decimales necesitas que uno de los dos números de la operación tengan un decimal, en este caso en \textbf{python3} se hace mediante un truncado de la división usando el // en lugar de /.
+    
+    \item \textbf{Iterar un diccionario}
+    
+    La ultima diferencia que se ha detectado en código a la hora de hacer la reescritura a \textbf{python3} a sido la iteración de diccionarios ya que en \textbf{python2} se pueden iterar los elementos clave-valor de un diccionario con el método \textit{iteritems()} o \textit{items()}, mientras que en python3 únicamente se puede usar el segundo de estos dos métodos, ya que con el primero de ellos se produce una excepción de tipo \textit{AttributeError}.
+    A su vez, los métodos \textit{iterkeys()} e \textit{itervalues()} para iterar las claves y los valores de un diccionario respectivamente no existen en Python 3. En su lugar tenemos que usar los métodos \textit{keys()} y \textit{values()}. Estos métodos tanto \textit{keys()}, \textit{values()} como items() se han visto afectados en clases como brulattice.py o cboost.py
+    
+\end{enumerate}
+
+
+
+\begin{itemize}
+
+\item \textbf{brulattice.py}
+
+\item \textbf{cboost.py}
+
+En la clase cboost.py inicialmente he modificado el método allsubsets para que sea mas corto y enfiente utilizando la libreria de combinations procedente de itertools la cual me permite realizar un for anidado de una manera más eficiente y con un número de lineas reducido.
+Tambein 
+
+\item \textbf{clattice.py}
+
+\item \textbf{closminer.py}
+
+\item \textbf{corr.py}
+
+\item \textbf{decorator.py}
+
+La clase decorator.py es una nueva clase implementada para \textbf{python3} la cual nos permite utilizar diferentes funcionalidades de la metaprogramación mencionadas anteriormente, como es la creación de constructores mediante una simple linea de código gracias a las clase Structure  y la variable \_fields o incluso introducir partes del código (funciones, métodos) con otra variable llamada \_processing.
+
+También se introducen un método que nos permite saber quienes son las clases padre de una clase u objeto, gracias al modulo \textit{Signature} de la clase inspect.py.
+
+\item \textbf{hypergraph.py}
+
+En la clase hypergraph se realiza una herencia de la clase Structure, para eliminar su \_\_init\_\_ sustituyéndolo por la variable \_fields y con ello reducir el número de lineas de código.
+También se ha diseñado un patrón decorator el cual sustituye la mayoría de las funciones que se encuentran en dicha clase:  \textbf{[addel,added,addhg,remel,remed]}, este cambio se llevó a cabo debido a que se vio un claro patrón de repetición en todas las funciones de la clase, el patrón es el siguiente:
+
+\begin{verbatim}
+        def decorator(self,a1,a2,a3,a4,a5):
+        if a1:
+            a1()
+        for e in a2:
+            a3(e)
+        if a4:
+            a4(a2)
+        if a5:
+            a5()
+\end{verbatim}
+
+Con este patrón se consigue resumir todas y cada una de las funciones de la clase en una única linea de código, para ello tuve que usar funcionalidades como \textit{lambda} la cual permite generar una función dentro del patrón decorator. (\# lineas antes = 142, \# lineas después = 134)
+
+\item \textbf{rerulattice.py}
+
+\item \textbf{slanode.py}
+
+En esta clase slanody.py se ha eliminado la clase \textit{auxitset} con todos sus métodos, introduciéndola dentro de la propia clase \textit{slanode}, en concreto se han introducido los dos métodos \textit{str2node} y \textit{set2node} en la clase \textit{slanode} y también se ha creado el \_\_init\_\_ de \textit{auxitset} y \textit{slanode} con un solo método llamado \_\_new\_\_ que introduce como parámetros los atributos de la clase y los inicializa sin ser necesario usar una clase auxiliar.
+
+\item \textbf{slarule.py}
+
+En esta otra clase se añade también al herencia de la clase decorator para poder minimizar la creación del constructor \_\_init\_\_ , se eliminan todas la ocurrencias de igualdad con 0, ya que en este caso siempre es verdadero y por lo tanto, las reglas if x = 0 son inutiles un ejemplo de ello seria:
+
+\begin{verbatim}
+    if self.an.supp == 0:
+        self.confval = float(self.cn.supp)/self.an.supp
+        
+    #### Se sustituye por: #####
+    
+    if not self.an.supp:
+        self.confval = float(self.cn.supp)/self.an.supp
+\end{verbatim}
+
+Con este simple cambio se genera un pequeña mejora en el rendimineto del programa y a su vez facilita la compresión del mismo.
+
+\item \textbf{slattice.py}
+    
+\item \textbf{verbosity.py}
+
+En esta clase se añade una herencia de la clase decorator.py previamente analizada, verbosity utiliza una de las clases de decorator llamada Structure la cual permite eliminar el \_\_init\_\_ de la clase añadiendo una unica variable llamada \_fields, en la cual se definen cada uno de los parametros definidos en el \_\_init\_\_, tanto argumentos como los propios atributos de la clase.
+
+En código se ve así:
+\begin{verbatim}
+        def __init__(self,verb=True):
+        """
+        verbosity;
+        lim and count for the progress-reporting ticks;
+        """
+        self.verb = verb
+        self.lim = 0
+        self.count = 0
+        
+        #### Se sustituye por: #####
+        
+        _fields = [('verb', True), ('lim', 0), ('count', 0)]
+\end{verbatim}
+
+Con este cambio conseguimos una mejora en cuanto al número de lineas y simplicidad de código enorme, ya que realizar el constructor de la clase antes nos costaba 7 lineas donde ahora lo podemos conseguir en una. Por lo demás, los demás cambios han sido simplemente en la sintaxis ya que python2 y python3 tienen diferencias en el lexico. (\# lineas antes = 47, \# lineas después = 35)
+\end{itemize}
+
+\chapter{\emph{Conclusiones}}
 
 % Indique aquí el fichero .bib que contenga su bibliografía.
 \bibliography{refs}
