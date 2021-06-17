@@ -6,6 +6,7 @@ from slanode import str2node
 
 def allsubsets(givenset):
     "construct powerset of aset, list of all subsets"
+    
     aset = givenset.copy()
     for e in aset:
         aset.remove(e)
@@ -26,13 +27,18 @@ class cboost:
 
     def filt(self,boost,clatt,rrseconf):
         "return corr with surviving rules under the boost filtering - must organize differently"
+        
         self.outcome = corr()
         for cn in self.ants.keys():
+            
             "check if any antecedent leaves a rule to cn - BRUTE FORCE ALGORITHM"
+            
             self.outcome[cn] = []
+            
             for an in self.ants[cn]:
                 goodsofar = True
                 conf1 = float(cn.supp)/an.supp
+                
                 for cn2 in rrseconf.keys():
                     for an2 in rrseconf[cn2]:
                         if cn.difference(an) <= cn2 and an2 <= an:
@@ -52,8 +58,10 @@ class cboost:
                                     if conf1 <= conf2*boost:
                                         goodsofar = False
                                         break   # breaks for elem
-                        if not goodsofar: break # breaks for an2
-                    if not goodsofar: break     # breaks for cn2
+                        if not goodsofar:
+                            break # breaks for an2
+                    if not goodsofar: 
+                        break     # breaks for cn2
                 if goodsofar:
                     self.outcome[cn].append(an)
         return self.outcome
