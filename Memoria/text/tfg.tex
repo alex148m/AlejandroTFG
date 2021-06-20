@@ -161,21 +161,7 @@ Para la realización del proyecto se ha utilizado una metodología incremental, 
 \label{fig_pro}
 \end{figure}
 
-A continuación, defino los requisitos funcionales y no funcionales del proyecto software, al no ser una aplicación destinada hacia un usuario(cliente), los requisitos no funcionales, se basan en el correcto funcionamiento de la aplicación y los requisitos funcionales
-
-\begin{table}[h]
-\centering
-\begin{tabular}{|l|l|}
-\hline
-Identificador & Descripción                     \\ \hline
-RF01         & La aplicación deberá            \\ \hline
-RF02         & La mejora en python3            \\ \hline
-RF03         & La mejora en python3            \\ \hline
-RF04         & La refactorización de l         \\ \hline
-\end{tabular}
-\caption{Requisitos funcionales del proyecto}
-\label{tab:my-table}
-\end{table}
+A continuación, defino los requisitos funcionales y no funcionales del proyecto software, al no ser una aplicación destinada hacia un usuario(cliente), los requisitos no funcionales, se basan en el correcto funcionamiento de la aplicación.
 
 \begin{table}[h]
 \centering
@@ -194,7 +180,7 @@ RNF04          & La refactorización de los métodos no supondrá un cambio en l
 \newpage
 
 \section{Diagrama de clases UML}
-En este apartado indico el diagrama de clases UML inicial de Slatt escrito en pyhton2 y el resultado final del proyecto al reescribirlo a python3 con las nuevas clases, herencias, etc.
+En este apartado indico el diagrama de clases UML inicial de Slatt escrito en pyhton2 [\ref{fig_UML2}] y el resultado final del proyecto al reescribirlo a python3 [\ref{fig_UML3}] con las nuevas clases, herencias, etc.
 
 \begin{figure}[ht!] % [h!] fuerza que el elemento se sitúe
                     % en la posición señalada, en vez de al
@@ -203,7 +189,35 @@ En este apartado indico el diagrama de clases UML inicial de Slatt escrito en py
 \includegraphics[width=1.45\linewidth]{imagenes/Diagrama en blanco - Clase UML (1).png}
 \end{center}
 \caption{Diagrama de clases UML Versión Python2}
-\label{fig_pro}
+\label{fig_UML2}
+\end{figure}
+
+\newpage
+
+\begin{figure}[ht!] % [h!] fuerza que el elemento se sitúe
+                    % en la posición señalada, en vez de al
+                    % comienzo de una página.
+\begin{center}
+\includegraphics[width=1.5\linewidth]{imagenes/python3 - Clase UML.png}
+\end{center}
+\caption{Diagrama de clases UML Versión Python3}
+\label{fig_UML3}
+\end{figure}
+
+\newpage
+
+\section{Diagrama de Gantt}
+
+En esta otra sección indico como ha sido divido el proyecto en función del tiempo con un diagrama de Gantt \ref{fig_GANTT} en el que se ve que tareas se han ido realizando durante el tiempo que el proyecto a estado activo.
+
+\begin{figure}[ht!] % [h!] fuerza que el elemento se sitúe
+                    % en la posición señalada, en vez de al
+                    % comienzo de una página.
+\begin{center}
+\includegraphics[width=1\linewidth]{imagenes/Diagrama de Gantt básico.png}
+\end{center}
+\caption{Diagrama de clases UML Versión Python3}
+\label{fig_GANTT}
 \end{figure}
 
 
@@ -239,9 +253,9 @@ La metaprogramación se base en estos conceptos principales:
     \end{itemize}
 \end{itemize}
 
-En conclusión la metaprogramación es la programación que utiliza los programas como datos y permite modificar su propia estructura. \citep{silva2018metaprogramacion}
-
-\section{Metaprogramación}
+En conclusión la metaprogramación es la programación que utiliza los programas como datos y permite modificar su propia estructura. \citep{silva2018metaprogramacion}, aunque otra definición valida seria el conjunto de cosas que tienen más que ver con el proceso que con escribir código o trabajar de manera más eficiente.
+\newpage
+\section{Charla metaprogramación MIT}
 
 David Bleazley en esta charla explica uno de los grandes cambios que existen en Python3 respecto de Python2, la metaprogramación.\citep{David}
 
@@ -281,6 +295,8 @@ es decir, la implementación de la clase.
 
 Cuando creamos una metaclase que hereda la clase tipo, esta tiene accesso al nombre de la clase, sus padres y todos sus atributos.
 
+\newpage
+
 \subsection{Clase Type}
 $\_\_new\_\_()$ es otro ejemplo de metaprogramación. Crea nuevas instancias de clase y no está vinculado a una instancia de la clase. Este método se llama antes de llamar a $\_\_init\_\_()$. Podemos anular el $\_\_new\_\_()$ de la superclase.
 El retorno del método $\_\_new\_\_()$ es la instancia de la clase. Esto es útil cuando queremos modificar la creación de tipos de datos inmutables como las tuplas.
@@ -305,12 +321,25 @@ def __new__(cls, name, bases, clsdict):
     \citep{Farhad}
 \end{enumerate}
 
+\subsection{Construir sistemas}
+Otra funcionalidad que nos ofrece la metaprogramación es la construcción de sistemas, ya que para la mayoría de los proyectos como este, existe un "proceso de construcción", es decir, se necesita una secuencia de operaciones para transformar todas las entradas que metemos en salidas.Por lo general este proceso suele ser bastante odioso ya que solemos tener una cantidad elevada de entradas, como por ejemplo, ejecuto un código para que funcione el programa, otro código para los benchmarks, otro código para los gráficos, es por ello que utilizamos la metaprogramación en este ámbito también. \citep{metaprogramming}
+
+Básicamente la funcionalidad es la siguiente, se define una serie de dependencias, una serie de objetivos y reglas para ir de uno a otro. Le indicas al sistema de compilación que objetivo desear ejecutar en particular, y el trabajo de este es buscar y encontrar todas las dependencias de ese objetivo, después aplicar las reglas que este contiene y llegar al objetivo final.
+
+En este proyecto he usado uno de los sistemas de compilación más conocidos en el ámbito de la programación \textbf{make}, debido a que el proyecto a sido totalmente desarrollado en linux y make esta instalado en cualquier maquina que utilice UNIX como sistema operativo. En este caso he usado dicho sistema para generar la memoria en latex y para la ejecución de los test unitarios y benchmarks, un ejemplo de ello son los siguientes objetivos marcados:
+
+\begin{verbatim}
+    paper.pdf: paper.tex plot-data.png
+	    pdflatex paper.tex
+\end{verbatim}
+
+La directiva paper.pdf tiene una regla sobre cómo producir el lado izquierdo usando el lado derecho. O, dicho de otra manera, las cosas nombradas en el lado derecho son dependencias y el lado izquierdo es el objetivo. En make, la primera directiva también define el objetivo predeterminado. Si ejecuta makes sin argumentos, este es el objetivo que construirá.
 
 \chapter{\emph{Hipergrafo y problemas relacionados}}
 
 \section{Conceptos básicos}
 En dicho proyecto también se van a tratar elementos como los hipergrafos
-y algoritmos con aplicación a estos.
+y algoritmos con aplicación a estos, para ello primero he realizado un primer apartado con los conceptos básicos de que es o para que sirve un hipergrafo y más adelante me dedico a una explicación más técnica y profunda en el tema.
 
 Un hipergrafo H es una familia de subconjuntos (aristas) de un conjunto finito de vértices. Un hipergrafo es simple si ninguno de sus bordes está contenido en ningún otro de sus bordes. Decimos que un hipergrafo está saturado si cada subconjunto del conjunto de vértices está contenido en un borde o contiene un borde de el hipergrafo. \citep{Thomas}
 
@@ -338,11 +367,8 @@ Se toma como algoritmo principal \textit{The algorithm of Berge}, al cual se le 
 %\codigo[numbers=none,frame=single]{codigo/berge.c}{Original}{11.5cm}
 
 \end{center}
-
-\section{Transversales mínimas de un Hipergrafo}
-
 \newpage
-\section{Problemas relacionados con SIMPLE-H-SAT en la teoria de bases de datos}
+\section{Problemas relacionados con SIMPLE-H-SAT en la teoría de bases de datos}
 
 Siguiendo la lectura del paper \citep{Thomas} en el apartado séptimo habla sobre los diferentes problemas relacionados con el SIMPLE-H-SAT en la teoría de bases de datos.
 
@@ -376,6 +402,30 @@ También podemos definir la reglas representativas como:
 $RR_\tau,_\gamma=\{r \in AR_\tau,_\gamma \;|\; \nexists \; r′ \in AR_\tau, \;|\; \gamma\{r\}$ tal que $r \in C(r′)\}$ \citep{UC}
 
 Con esta definición de regla representativa no redundante podemos conseguir una cantidad de reglas de asociación menor con un mismo valor de contenido, es decir, nos ahorraríamos mucho espacio en una base de datos gracias a esta definición de regla representativa.
+
+\newpage
+
+\section{Problemas relacionados con las transversales de los hipergrafos y su saturación}
+
+El segundo problema que nos encontramos después del SIMPLE-H-SAT es el reconocimiento de las transversales mínimas de un hipergrafo, ahora indicaré cual es la complejidad de dicho problema y luego demostrare la equivalencia que tiene con SIMPLE-H-SAT y el reconocimiento transversal en tiempo polinomial, basándome en la definiciones del paper anteriormente mencionado \citep{Thomas}.
+
+
+\textbf{Definición 1.} Teniendo dos hipergrafos \textit{H}, \textit{G} con vértices \textit{V}. Entonces $H \geq G$ si y solo si $\forall h \in H : \exists g \in G : H \supseteq G$. Esto a su vez define la siguiente relación,  $H \leq G$ si y solo si $\forall h \in H : \exists g \in G : H \subseteq G$.
+
+Decir que  \textit{H} = \textit{G} si y solo si $H \geq G$ y $G \geq H$, y $H \geq G$ no implica que $G \leq H$ y viceversa. Ahora indico una caracterización para la saturación de los hipergrafos:
+
+\textbf{Teorema 1.} $H \neq \emptyset$ puede ser un hipergrafo. Entonces H esta saturado si y solo si $Tr(max(H)) \geq min(H)$.
+
+\textbf{Prueba:} Asumimos que \textit{H} esta saturado, y consideramos una arista \textit{T} de $Tr(max(H))$. Tenemos $T \in Cov(H)$, pero T es una transversal de $max(H)$, $\forall E \in H $ se mantiene que $T \nsubseteq E$. Pero entonces $E' \subseteq T$ para algún $E' \in H$ lo que implica que $T \supseteq E''$ para algún $E'' \in min(H)$. Esto implica que $Tr(max(H)) \geq min(H)$. Asumimos ahora que \textit{H} no esta saturado, $X \supseteq V, X \notin Cov(H)$.
+
+\textbf{Corolario 1.} Un hipergrafo $H \neq \emptyset$ es saturado si y solo si $Tr(\overline{H}) \geq H$.
+
+\textbf{Prueba:} Es facilmente demostrable que $\overline{max(H)} = min(\overline{H})$, sacado directamente del Teorema 1
+
+\textbf{Corolario 2.} Para demostrar si $Tr(H) \geq H$ se sostiene para un hipergrafo H es co-\textbf{NP}-completo, incluso si \textit{H} se auto completa y contiene solo aristas de tamaño 3 y n-3, donde $n = |V(H)|$
+
+%%SEGUIR PAGINA 18 identifyng
+
 
 \section{Axiomas de Armstrong}
 
@@ -447,6 +497,10 @@ Los kd-trees son frecuentemente utilizados en bases de datos para satisfacer con
 
 Una consulta podría ser por ejemplo, saber todos los registros de personas que compren pan, leche y huevos, y además tengan entre 25 y 45 años, y que vivan en España, todo esto se podría realizar en una única consulta utilizando los \textit{KD trees} como algoritmo de búsqueda ya que permite realizar diferentes consultas simultaneas, en lugar del algoritmo \textit{apriori} actualmente utilizado, en el que al añadir múltiples consultas, su coste computacional hace que no tenga sentido dicho calculo, debido a su lento proceso.
 
+\section{Implementación KD-Trees en Slatt}
+
+No he incluido la implementación de KD-Trees en Slatt debido a que la forma en la que he intentado implementarlo hacia más lento el código y no conseguía una mejora real en el programa, es por esto que decidí no incluirla y usar otros algoritmos y clases para la mejora, como he mencionado a lo largo de la memoria.
+
 \newpage
 \section{Ejemplo gráfico KD Tree}
 
@@ -480,6 +534,12 @@ Desde un punto de vista geométrico como se ve en la Ilustración \ref{arbol_kd}
 \chapter{\emph{Desarrollo Software}}
 En este aparatado del proyecto se muestran que cambios han sido necesarios en el código para la correcta ejecución de Slatt pasando todo su código de python2 a python3, los test necesarios para su correcto funcionamiento y además se explica que mejoras se han llevado a cabo tanto de rendimiento, como en la reducción del número de lineas de código.
 
+\section{Ejecución y funcionamiento de Slatt}
+
+Slatt es una herramienta matemática que se encarga de mediante una entrada de datos en este caso, por ejemplo, un dataset sobre los problemas de visión de ciertas personas, el cual dispone de 4 atributos, la edad, la prescipción (myope, hypermetrope,etc), si tiene o no astigmatismo y la cantidad de lágrimas que genera.
+
+Se introduce dicho dataset en el prgrama principal y la herramiente devuelve diferentes datos como son la confianza, el soporte y con esto generar las diferentes reglas de asociación que existen y cuales de estas son reglas de inferencia. 
+
 \section{Test unitarios}
 
 En esta sección se especifica como se realizan los test unitarios, para comprobar si las dos versiones del código mantienen la misma funcionalidad basándose en la salida de estos test.
@@ -489,6 +549,8 @@ En esta sección se especifica como se realizan los test unitarios, para comprob
 \lstinputlisting[language=bash,caption=\textbf{Makefile},frame=bottom]{codigo/makefile}
 
 Utilizando este \textbf{makefile} se realiza una ejecución simultanea de ambas versiones, guardando dicha salida en un fichero.txt y a continuación, se hace un \textbf{diff} entre los dos archivos, en el caso en el que el \textbf{diff} devuelva un archivo vacío, sabremos que las dos versiones tienen la misma funcionalidad.
+
+\newpage
 
 \section{Mejoras del código}
 En esta sección se va a discutir cuales han sido los cambios y mejoras en cada una de las clases que se han modificado en el código:
@@ -520,22 +582,65 @@ Las principales diferencias que he encontrado en el proyecto han sido las siguie
     
 \end{enumerate}
 
-
+\subsection{Cambios realizados en las clases}
 
 \begin{itemize}
 
 \item \textbf{brulattice.py}
 
+En la clase brulattice.py no se han realizado mejoras ni cambios en el código salvo lo necesario para la ejecución en python3.
+
 \item \textbf{cboost.py}
 
-En la clase cboost.py inicialmente he modificado el método allsubsets para que sea mas corto y enfiente utilizando la libreria de combinations procedente de itertools la cual me permite realizar un for anidado de una manera más eficiente y con un número de lineas reducido.
-Tambein 
+En la clase cboost.py inicialmente he modificado el método allsubsets para que sea mas corto y eficiente utilizando la librería de combinations procedente de itertools la cual me permite realizar fors anidados de una manera más eficiente y con un número de lineas reducido.
+\begin{verbatim}
+    def allsubsets(givenset):
+    aset = givenset.copy()
+    for e in aset:
+        aset.remove(e)
+        p = allsubsets(aset)
+        q = []
+        for st in p:
+            s = st.copy()
+            s.add(e)
+            q.append(s)
+        return p+q
+    return [ set([]) ]
+    
+    #### Se sustituye por: #####
+    
+    def allsubsets(givenset):
+    s = len(givenset)
+    q=[]
+    for i in range(s):
+        for e in combinations(givenset,i):
+            q.append(e)
+    return q
+\end{verbatim}
+
+Dentro del método \textit{filt()} también se han cambiado alguno de los fors anidados que tenia debido a que aumentaban la carga de trabajo innecesariamente, para ello en vez de utilizar el método \textit{keys()} a la hora de iterar, se ha decidido utilizar dos parámetros en el for e iterarlo sobre el método \textit{items()}, con lo que mejoramos tanto la legibilidad del código como el rendimiento ya que nos eliminamos un for anidado por cada vez que lo sustituimos, el único inconveniente encontrado en este paso fue que al usar este tipo de for no puede haber dependencias entre ambos parámetros ya que entonces no funciona correctamente el programa. (\# lineas antes = 60, \# lineas después = 52)
+
+\begin{verbatim}
+    for cn2 in rrseconf.keys():
+        for an2 in rrseconf[cn2]:
+        
+     #### Se sustituye por: #####
+     
+     for cn2,values in rrseconf.items():
+        for an2 in values:
+\end{verbatim}
 
 \item \textbf{clattice.py}
 
+En la clase clattice.py utilice la variable \_processing para eliminar el \_\_init\_\_ el cual era muy largo y costoso definiéndolo en un método fuera de la clase el cual se ejecuta una vez y no es necesario volver a ejecutar con lo que a la larga nos ahorramos código en tiempo de ejecución, por lo demás no he incluido ninguna mejora más respecto a python2.
+
 \item \textbf{closminer.py}
 
+En la clase closminer.py se ha realizado un cambio similar al de clattice.py introduciendo una método pos\_init que funciona como método auxiliar para la creación de una instancia de closminer, además de introducir la herencia de la clase structure de decorator para poder eliminar el método \_\_init\_\_ y así acelerar el proceso como hemos hecho en las demás clases del programa.
+
 \item \textbf{corr.py}
+
+La clase corr.py es una clase con pocas lineas de código y difícil de optimizar más ya que no contiene método muy densos, por que únicamente he realiza la herencia de Structure y he eliminado el constructor ineficiente que teníamos en python2.
 
 \item \textbf{decorator.py}
 
@@ -564,9 +669,11 @@ Con este patrón se consigue resumir todas y cada una de las funciones de la cla
 
 \item \textbf{rerulattice.py}
 
+En la clase rerulattice.py no se han realizado mejoras ni cambios en el código salvo lo necesario para la ejecución en python3.
+
 \item \textbf{slanode.py}
 
-En esta clase slanody.py se ha eliminado la clase \textit{auxitset} con todos sus métodos, introduciéndola dentro de la propia clase \textit{slanode}, en concreto se han introducido los dos métodos \textit{str2node} y \textit{set2node} en la clase \textit{slanode} y también se ha creado el \_\_init\_\_ de \textit{auxitset} y \textit{slanode} con un solo método llamado \_\_new\_\_ que introduce como parámetros los atributos de la clase y los inicializa sin ser necesario usar una clase auxiliar.
+En esta clase slanode.py se ha eliminado la clase \textit{auxitset} con todos sus métodos, introduciéndola dentro de la propia clase \textit{slanode}, en concreto se han introducido los dos métodos \textit{str2node} y \textit{set2node} en la clase \textit{slanode} y también se ha creado el \_\_init\_\_ de \textit{auxitset} y \textit{slanode} con un solo método llamado \_\_new\_\_ que introduce como parámetros los atributos de la clase y los inicializa sin ser necesario usar una clase auxiliar.
 
 \item \textbf{slarule.py}
 
@@ -585,6 +692,8 @@ En esta otra clase se añade también al herencia de la clase decorator para pod
 Con este simple cambio se genera un pequeña mejora en el rendimineto del programa y a su vez facilita la compresión del mismo.
 
 \item \textbf{slattice.py}
+
+En la clase slattice.py no se han realizado mejoras ni cambios en el código salvo lo necesario para la ejecución en python3.
     
 \item \textbf{verbosity.py}
 
@@ -599,6 +708,7 @@ En código se ve así:
         """
         self.verb = verb
         self.lim = 0
+        
         self.count = 0
         
         #### Se sustituye por: #####
@@ -609,7 +719,23 @@ En código se ve así:
 Con este cambio conseguimos una mejora en cuanto al número de lineas y simplicidad de código enorme, ya que realizar el constructor de la clase antes nos costaba 7 lineas donde ahora lo podemos conseguir en una. Por lo demás, los demás cambios han sido simplemente en la sintaxis ya que python2 y python3 tienen diferencias en el lexico. (\# lineas antes = 47, \# lineas después = 35)
 \end{itemize}
 
+\section{Discusión y resultados de la mejora}
+
+DUDA SI METER ESTE APARTADO
+
 \chapter{\emph{Conclusiones}}
+
+El propósito de este trabajo de fin de grado es su inicio fue la reescritura de Slatt (programa matemático que calcula reglas de asociación ) del lenguaje de programación python2 a su nueva versión de python3, además de esto se pretendía mejorar dicho programa añadiendo diversas mejorar con algoritmos basados en hipergrafos y cálculos de clausuras y retículos.
+
+Para esto se realizo inicialmente una búsqueda de información sobre dichas estructuras de datos, tanto hipergrafos como kd-trees para ver su funcionamiento y llegar a la conclusión que son una buena herramienta para nuestro problema ya que nos permiten guardar las diferentes variables de la reglas de una forma más eficiente que como se estaban guardando ahora en simple diccionarios o listas de elementos, es por ello, que se decidió implementar parte del programa usando estos dos tipos de estructuras.
+
+\hfill
+
+Comentar que era difícil la mejora en el propio código de pyhton2, ya que no había mucha mejora posible en el propio código que venia de serie, es por esto que se busco realizar clases auxiliares que proporcionasen algo de mejoría al código, siempre buscando un mejora tanto de rendimiento como en lineas de código, este fue el objetivo principal a la hora de la reescritura.
+
+\hfill
+
+Mi conclusión personal sobre el trabajo realizado es que las reglas de asociación son una herramienta muy útil en el ámbito de las ciencias de la computación, como por el ejemplo en el \textit{Big Data}, y que todavía queda mucho desarrollo de estas por delante, no tanto en lo que ya conocemos como objeto matemático sino en la mejora de su rendimiento añadiendo nuevos algoritmos que nos permitan tener una producción de reglas de asociación más rápida y efectiva, ya que gracias a ellas se pueden obtener información muy valiosa sobre un dataset muy extenso que a priori no tenga mucho valor y con esto generar una ventaja ya sea en el ámbito de los negocios como una simple mejora en la industria del la investigación científica.
 
 % Indique aquí el fichero .bib que contenga su bibliografía.
 \bibliography{refs}
