@@ -338,13 +338,13 @@ class closminer(Structure):
         """
         if not clfilename:
             clfilename = self.xmlfilename
-        xmldoc = xml.etree.ElementTree.parse(clfilename)
+        xmldoc = etree.parse(clfilename)
         elemclos = xmldoc.find("closures")
         self.minsupp = self.nrtr
-        for clo in elemclos.getchildren():
+        for clo in elemclos:
             "handle a closed set"
             s = set()
-            for itelem in clo.getchildren():
+            for itelem in clo:
                 "to do: check they are items"
                 it = itelem.get("value")
                 s.add(it)
