@@ -1,0 +1,10 @@
+Dataset File Name? Found 13 transactions; 3 items; 27 occurrences.
+Suggested supports in percent and absolute value, based on confidence:
+0.95: 13.846 1
+0.90: 27.692 3
+0.85: 41.538 5
+0.80: 55.385 7
+0.75: 69.231 9
+0.70: 83.077 10
+0.65: 96.923 12
+0.60: 110.769 14
