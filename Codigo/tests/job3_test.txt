@@ -1,0 +1,31 @@
+
+[Slatt] Initializing lattice from file e13... computing parameters... ...reading closures from XML file... 7 closures found. 
+[Slatt] Computing B* basis at confidence 0.6 ...computing (non-)antecedents... ...done; validating minimal antecedents... 
+
+
+[ c: 0.667 s: 30.769% ] c => a b
+[ c: 0.692 s: 69.231% ] => a b
+('B* basis on e13.txt has ', 2, 'rules of confidence at least', 0.6)
+
+[Slatt] Computing B* basis at confidence 0.55 ...computing (non-)antecedents... ...done; validating minimal antecedents... ('B* basis on e13.txt has ', 2, 'rules of confidence at least', 0.55)
+
+[Slatt] Initializing lattice from file e13... computing parameters... 
+[Slatt] Something is wrong! Platform Linux not handled yet, sorry
+
+[Slatt] Computing closures at support 7.69%; singletons first... 3 such closures; computing larger closures... ...done. 7 closures found. 
+[Slatt] The max support is 11; the effective absolute support threshold is 4, equivalent to 30.769% of 13 transactions. 
+[Slatt] Computing cuts for minimal generators... ...computing (non-)antecedents... ...done; computing transversal antecedents... ...done; 
+[Slatt] Initializing min supp below free sets... ...done.
+
+[Slatt] Filtering minimal generators to obtain the Guigues-Duquenne basis... ...done.
+('GD basis on e13.txt has ', 1, 'rules of confidence at least', 1.0)
+('GD basis on e13.txt has ', 1, 'rules of confidence at least', 1.0)
+
+[Slatt] Computing representative rules at confidence 0.6... ...computing (non-)antecedents... ...done; computing potential antecedents... ...checking valid antecedents... ...done.
+
+
+
+[ c: 0.667 s: 30.769% ] c => a b
+[ c: 0.692 s: 69.231% ] => a b
+('RR basis on e13.txt has ', 2, 'rules of confidence at least', 0.6)
+2

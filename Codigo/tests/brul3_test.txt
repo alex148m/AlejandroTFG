@@ -1,0 +1,13 @@
+
+[Slatt] Initializing lattice from file e13... computing parameters... 
+[Slatt] Something is wrong! Platform Linux not handled yet, sorry
+
+[Slatt] Computing closures at support 7.69%; singletons first... 3 such closures; computing larger closures... ...done. 7 closures found. 
+[Slatt] The max support is 11; the effective absolute support threshold is 4, equivalent to 30.769% of 13 transactions. 
+[Slatt] Computing B* basis at confidence 0.7  and confidence boost 1.05 ...computing (non-)antecedents... ...done; validating minimal antecedents... 
+[Slatt] Computing B* basis at confidence 0.666666666667 ...computing (non-)antecedents... ...done; validating minimal antecedents... 
+[ c: 0.846 s: 84.615% ] => b
+[ c: 0.769 s: 76.923% ] => a
+[ c: 0.818 s: 69.231% ] b => a
+[ c: 0.900 s: 69.231% ] a => b
+4

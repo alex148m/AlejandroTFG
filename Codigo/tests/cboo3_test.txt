@@ -1,0 +1,37 @@
+
+[Slatt] Initializing lattice from file e13... computing parameters... 
+[Slatt] Something is wrong! Platform Linux not handled yet, sorry
+
+[Slatt] Computing closures at support 7.62%; singletons first... 3 such closures; computing larger closures... ...done. 7 closures found. 
+[Slatt] The max support is 11; the effective absolute support threshold is 4, equivalent to 30.769% of 13 transactions. 
+[Slatt] Computing cuts for minimal generators... ...computing (non-)antecedents... ...done; computing transversal antecedents... ...done; 
+[Slatt] Initializing min supp below free sets... ...done.
+Iteration-free basis:
+[ c: 1.000 s: 30.769% ] a c => b
+1
+
+[Slatt] Computing representative rules at confidence 0.75... ...computing (non-)antecedents... ...done; computing potential antecedents... ...checking valid antecedents... ...done.
+At confidence 0.75
+[ c: 0.800 s: 30.769% ] b c => a
+[ c: 1.000 s: 30.769% ] a c => b
+[ c: 0.846 s: 84.615% ] => b
+[ c: 0.769 s: 76.923% ] => a
+[ c: 0.833 s: 38.462% ] c => b
+[ c: 0.818 s: 69.231% ] b => a
+[ c: 0.900 s: 69.231% ] a => b
+7
+
+[Slatt] Computing representative rules at confidence 0.714285714286... ...computing (non-)antecedents... ...done; computing potential antecedents... ...checking valid antecedents... ...done.
+At confidence 0.714285714286
+[ c: 0.800 s: 30.769% ] b c => a
+[ c: 1.000 s: 30.769% ] a c => b
+[ c: 0.846 s: 84.615% ] => b
+[ c: 0.769 s: 76.923% ] => a
+[ c: 0.833 s: 38.462% ] c => b
+[ c: 0.818 s: 69.231% ] b => a
+[ c: 0.900 s: 69.231% ] a => b
+7
+At cboost 1.05
+[ c: 0.846 s: 84.615% ] => b
+[ c: 0.769 s: 76.923% ] => a
+2

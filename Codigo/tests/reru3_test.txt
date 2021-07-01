@@ -1,0 +1,29 @@
+
+[Slatt] Initializing lattice from file e13... computing parameters... 
+[Slatt] Something is wrong! Platform Linux not handled yet, sorry
+
+[Slatt] Computing closures at support 7.69%; singletons first... 3 such closures; computing larger closures... ...done. 7 closures found. 
+[Slatt] The max support is 11; the effective absolute support threshold is 4, equivalent to 30.769% of 13 transactions. 
+[Slatt] Computing cuts for minimal generators... ...computing (non-)antecedents... ...done; computing transversal antecedents... ...done; 
+[Slatt] Initializing min supp below free sets... ...done.
+[ c: 1.000 s: 30.769% ] a c => b
+1 rules in the iteration free basis.
+
+[Slatt] Filtering minimal generators to obtain the Guigues-Duquenne basis... ...done.
+[ c: 1.000 s: 30.769% ] a c => b
+1 rules in the GD basis.
+
+[Slatt] Computing representative rules at confidence 0.81 using Kryszkiewicz's incomplete heuristic... ...computing (non-)antecedents... ...done; computing potential antecedents... ...checking valid antecedents... ...done.
+[ c: 0.833 s: 38.462% ] c => b
+[ c: 0.846 s: 84.615% ] => b
+[ c: 0.818 s: 69.231% ] b => a
+[ c: 0.900 s: 69.231% ] a => b
+4 repr rules found with Kr at conf 0.81
+
+[Slatt] Computing representative rules at confidence 0.81... ...computing (non-)antecedents... ...done; computing potential antecedents... ...checking valid antecedents... ...done.
+[ c: 1.000 s: 30.769% ] a c => b
+[ c: 0.846 s: 84.615% ] => b
+[ c: 0.833 s: 38.462% ] c => b
+[ c: 0.818 s: 69.231% ] b => a
+[ c: 0.900 s: 69.231% ] a => b
+5 repr rules found at conf 0.81

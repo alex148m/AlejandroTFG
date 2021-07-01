@@ -1,0 +1,56 @@
+
+[Slatt] Initializing lattice from file lenses_recoded... computing parameters... ...reading closures from XML file... 129 closures found. . . . 
+[Slatt] Computing B* basis at confidence 0.75 ...computing (non-)antecedents... ...done; validating minimal antecedents... ('B* basis on lenses_recoded.txt has ', 17, 'rules of confidence at least', 0.75)
+
+[Slatt] Initializing lattice from file lenses_recoded... computing parameters... 
+[Slatt] Something is wrong! Platform Linux not handled yet, sorry
+
+[Slatt] Computing closures at support 0.10%; singletons first... 12 such closures; computing larger closures... ...done. 129 closures found. Additionally checked 617 infrequent sets as negative border. 
+[Slatt] The max support is 15; the effective absolute support threshold is 1, equivalent to 4.167% of 24 transactions. . . . 
+[Slatt] Computing cuts for minimal generators... ...computing (non-)antecedents... ...done; computing transversal antecedents... ...done; 
+[Slatt] Initializing min supp below free sets... ...done.
+
+[Slatt] Filtering minimal generators to obtain the Guigues-Duquenne basis... ...done.
+('GD basis on lenses_recoded.txt has ', 25, 'rules of confidence at least', 1.0)
+
+[Slatt] Computing representative rules at confidence 0.75... ...computing (non-)antecedents... ...done; computing potential antecedents... ...checking valid antecedents... ...done.
+('Filtering rules at confidence boost', 1.2)
+
+[Slatt] Computing representative rules at confidence 0.625... ...computing (non-)antecedents... ...done; computing potential antecedents... ...checking valid antecedents... ...done.
+
+
+
+[ c: 0.833 s: 20.833% ] astigmatism=no tears=normal => soft
+[ c: 1.000 s: 20.833% ] soft => astigmatism=no tears=normal
+[ c: 1.000 s:  8.333% ] age=young astigmatism=yes tears=normal => hard
+[ c: 1.000 s:  4.167% ] age=presbyopic soft => astigmatism=no prescription=hypermetrope tears=normal
+[ c: 1.000 s: 16.667% ] age=young none => tears=reduced
+[ c: 1.000 s:  4.167% ] hard prescription=hypermetrope => age=young astigmatism=yes tears=normal
+[ c: 0.750 s: 12.500% ] hard => astigmatism=yes prescription=myope tears=normal
+[ c: 1.000 s: 12.500% ] astigmatism=yes prescription=myope tears=normal => hard
+[ c: 1.000 s: 50.000% ] tears=reduced => none
+[ c: 0.800 s: 50.000% ] none => tears=reduced
+[ c: 1.000 s:  4.167% ] age=pre-presbyopic none tears=normal => astigmatism=yes prescription=hypermetrope
+[ c: 1.000 s:  4.167% ] astigmatism=no none tears=normal => age=presbyopic prescription=myope
+[ c: 1.000 s:  4.167% ] none prescription=myope tears=normal => age=presbyopic astigmatism=no
+[ c: 1.000 s:  8.333% ] astigmatism=yes none tears=normal => prescription=hypermetrope
+[ c: 1.000 s:  8.333% ] none prescription=hypermetrope tears=normal => astigmatism=yes
+[ c: 1.000 s:  8.333% ] age=presbyopic astigmatism=no prescription=myope => none
+[ c: 1.000 s:  4.167% ] age=presbyopic hard => astigmatism=yes prescription=myope tears=normal
+[ c: 0.833 s: 20.833% ] astigmatism=yes prescription=hypermetrope => none
+[ c: 1.000 s:  4.167% ] age=pre-presbyopic hard => astigmatism=yes prescription=myope tears=normal
+('Confidence-boost filtered RR basis on lenses_recoded.txt has ', 19, 'rules of confidence at least', 0.75)
+
+[Slatt] Computing B* basis at confidence 0.75  and confidence boost 1.1 
+[Slatt] Computing B* basis at confidence 0.681818181818 ...computing (non-)antecedents... ...done; validating minimal antecedents... ('Filtering rules at confidence boost', 1.1)
+
+
+
+[ c: 0.750 s: 25.000% ] age=presbyopic => none
+[ c: 0.750 s: 12.500% ] astigmatism=yes hard tears=normal => prescription=myope
+[ c: 0.750 s: 12.500% ] age=pre-presbyopic prescription=hypermetrope => none
+[ c: 0.800 s: 50.000% ] none => tears=reduced
+[ c: 0.833 s: 20.833% ] astigmatism=no tears=normal => soft
+[ c: 0.833 s: 20.833% ] astigmatism=yes prescription=hypermetrope => none
+[ c: 0.750 s: 12.500% ] age=pre-presbyopic astigmatism=yes => none
+('Confidence-boost filtered B* basis on lenses_recoded.txt has ', 7, 'rules of confidence at least', 0.75)

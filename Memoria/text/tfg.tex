@@ -2,16 +2,16 @@
 % \documentclass[numeros]{tfg_domingo}
 
 \autor{Alejandro Martínez Floranes}
-\titulo{Reescribir slatt en Python 3}
+\titulo{Reescribir Slatt en python 3}
 % Título corto para los encabezamientos de pagina:
 \corto{} % En blanco si no es necesario recortarlo.
-\ingles{Rewrite slatt in Python 3}
+\ingles{Rewrite Slatt in python 3}
 \fecha{julio de 2021}
 % La normativa prescribe «cuatro o cinco palabras clave, en
 % español y en inglés, para su indexación en el repositorio
 % de TFG».
-\palabras{reglas de asociación, hipergrafos, slatt, refactorizar}%
-  {association rules, hypergraph, slatt, refactor}
+\palabras{reglas de asociación, hipergrafos, Slatt, refactorizar}%
+  {association rules, hypergraph, Slatt, refactor}
 
 \usepackage{lipsum} % Esto solo es relleno.
 \usepackage{listings}
@@ -63,19 +63,34 @@
 \mainmatter
 \chapter{\emph{Introducción}}
 
+\section{Minería de datos}
+La minería de datos es un área de investigación cuyo objetivo de extraer información de grandes volúmenes de datos.
+Sus aplicaciones cubren diversas áreas y emplean técnicas de estadística, ciencias de la computación y bases de datos. Con la masificación de datos se ha convertido en un problema para un humano controlar y manejar esta información, por ello es necesario resumir e identificar esta información para mostrarle al usuario de forma concisa.
+Entre todos estas técnicas que se utilizan, una de las diez más importantes son las reglas de asociación como se menciona en el artículo de \citet{wu2008top}.
+Encontrar estas reglas no es sencillo, el primer algoritmo de reglas de asociación fue dado por  \citet{agrawal1993mining}, pero sufría por una costosa complejidad computacional.
+A partir de este algoritmo, se propuso el algoritmo Apriori en el artículo  \citet{agrawal1994fast}.
+Desafortunadamente, el algoritmo Apriori también tiene sus limitaciones ya que genera muchas reglas redundantes, es decir, que tienen la misma significación o que se derivan unas de otras. Esto a generado interés entre los investigadores para minimizar el numero de reglas de asociación sin perder información valiosa para el usuario. \par
+
+Una de las primeras formas de medir la redundancia entre reglas de asociación fue dado en \citep{kryszkiewicz2001closed}. Donde la idea principal es que una regla no aporta información a un usuario si es consecuencia lógica de otra regla.
+Hay muchas librerías y programas que implementan algoritmos para hallar reglas de asociación con la mínima redundancia posible, entre ellas Slatt, que ha sido usada en varios artículos \citep{balcazar2010closure, tirnuaucua2020closed} y otros artículos relacionados con las reglas de asociación.
+
+Actualmente, el desarrollo de la librería Slatt muestra ciertas carencias : esta programada en una versión antigua de python, en concreto en python 2.7, tiene dentro de ella 13 clases de las cuales más de la mitad poseen código repetido y un número de lineas de código excesivas para la funcionalidad que esta librería proporciona.
+El cometido principal de este proyecto es mejorar la lectura y rendimiento del código, eliminando código repetido y añadiendo diversas funcionalidades que nos entrega python 3.x como es la metaprogramación.
+
 \section{Reglas de asociación}
 
-Este proyecto se basa principalmente en reescribir \textbf{slatt} en Python 3 e incluir diferentes mejoras en el código para mejorar tanto su eficiencia en cuanto a rendimiento, como en reducción de lineas de código, y realizar una mejora en la legibilidad del propio código.
+Unos de los objetivos de este proyecto es actualizar Slatt a python 3, aprovechar las posibilidades que nos brinda la metaprogramación e incluir diferentes mejoras en el código para mejorar tanto su eficiencia en cuanto a rendimiento, como en reducción de lineas de código sin empeorar la legibilidad del mismo.
 
-Slatt es un proyecto de software libre que ofrece funcionalidades para el cálculo de reglas de asociación. 
+\hfill
 
-Las reglas de asociación son declaraciones 'if-then' que ayudan a mostrar la probabilidad de relaciones entre elementos de datos, dentro de grandes conjuntos de datos. Las medidas de evaluación  de las reglas de asociación son: \textit{el soporte, la confianza y el lift.} 
+Las mejoras que se han hecho en Slatt se han incorporado en un repositorio abierto, ya que la licencia de Slatt es libre.
 
-\begin{itemize}
-    \item El \textbf{soporte} es la fracción de las transacciones que contiene tanto a X como a Y. 
-    \item La \textbf{confianza} es la fracción de las transacciones en las que aparece X que también incluyen a Y; esto es, la confianza mide con que frecuencia aparece Y en las transacciones que incluyen X.
-    \item El \textbf{lift} es la confianza de la reglas dividido por el cociente del consecuente.
-\end{itemize}
+\hfill
+
+Una base de datos esta formada por \textbf{transacciones}  conjunto de órdenes que se ejecutan formando una unidad de trabajo, \textbf{items} archivos informáticos que contiene datos sobre un dataset  y \textbf{conjuntos de items} conjunto de uno o más items que permiten en el caso de las reglas de asociación calcular diferentes parámetros como son la cobertura o el soporte.
+
+
+Las reglas de asociación son expresiones del tipo $W \rightarrow B$ donde $W, B \subset I$. El significado es que en las transacciones de la base de datos que tienen los items de $W$ tienden a tener los items en el conjunto $B$.. Los parámetros esenciales para comparar las reglas de asociación son: \textit{el soporte, la confianza y el lift.} \ref{asoc_rules}
 
 \begin{figure}[ht!] % [h!] fuerza que el elemento se sitúe
                     % en la posición señalada, en vez de al
@@ -84,20 +99,29 @@ Las reglas de asociación son declaraciones 'if-then' que ayudan a mostrar la pr
 \includegraphics[width=.49\linewidth]{imagenes/AR_1.png}
 \end{center}
 \caption{Association Rules}
-\label{fig_pro}
+\label{asoc_rules}
 \end{figure}
 
-A su vez, a la hora de plantear un problema utilizando reglas de asociación necesitamos disponer de diferentes elementos: 
+\begin{itemize}
+    \item El \textbf{frq(X,Y)} es las frecuencia de que aparezca el item X y el item Y en una misma transacción.
+    \item El \textbf{soporte} es la fracción de las transacciones que contiene tanto a X como a Y. 
+    \item La \textbf{confianza} es la fracción de las transacciones en las que aparece X que también incluyen a Y; esto es, la confianza mide con que frecuencia aparece Y en las transacciones que incluyen X.
+    \item El \textbf{lift} es la confianza de la reglas dividido por el cociente del consecuente.
+\end{itemize}
+
+A su vez, a la hora de plantear un problema utilizando reglas de asociación necesitamos disponer de diferentes elementos:  
 
 \begin{enumerate}
-    \item \textbf{Itemset.- }Conjunto de uno o más items (artículos).
+    \item \textbf{Itemset.- } Conjunto de uno o más items $X, Y$.
     \item \textbf{K-itemset.- } Itemset con k elementos.
     \item \textbf{Soporte de un itemset.- } Fracción de las transacciones que contienen el itemset.
-    \textbf{Itemset Frecuente} Itemset con soporte igual o superior a un umbral de soporte establecido por el usuario.
+    \textbf{Itemset Frecuente} Itemset con soporte igual o superior a un umbral de soporte establecido por el usuario. 
     \item \textbf{Umbral mínimo de confianza y de soporte.- } estos umbrales se utilizan para coger las reglas cuyo soporte o confianza sean mayores que las de umbral mínimo.
 \end{enumerate}
 
-Ejemplo sencillo de como utilizar las reglas de asociación para un problema general (problema de la lista de la compra). \citep{berzal2016reglas}
+Para dar los ejemplos nos apoyamos seguiremos los ejemplos clásicos dados por \citep{agrawal1993mining}, donde consideran el problema de la cesta de la compra. Este problema da una base datos con diferentes items y transacciones que representan las compras de varias personas en un supermercado a lo largo de un cierto tiempo. El objetivo es llegar a conocer los patrones de comportamiento a la hora de realizar la lista de la compra.
+En el cuadro \ref{prob_asoc} se muestra un ejemplo sencillo de una instancia del problema de la lista de la compra (\citet{datamining}).
+\newpage
 
 \begin{table}[h]
 \centering
@@ -111,22 +135,23 @@ TID & Artículos                     \\ \hline
 5         & Pan, leche, huevos, cerveza         \\ \hline
 \end{tabular}
 \caption{Problema reglas de asociación}
-\label{tab:my-table}
+\label{prob_asoc}
 \end{table}
 
-\begin{itemize}
-    \item El \textbf{soporte} de la cerveza, supp(cerveza) = 4/5 = 0.8
-    
-    \item El \textbf{soporte} de los pañales, supp(pañales) = 3/5 = 0.6
-    
-    \item El \textbf{soporte} de la cerveza y los pañales, supp(cerveza,pañales) = 3/5 = 0.6
-    
-    \item La \textbf{confianza} entre la cerveza y los pañales seria, supp(cerveza,pañales) / supp(cerveza) 
-   
-    = 0.6 / 0.8 = 0.75
-\end{itemize}
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]
+  \textbf{Ejemplo de calculo sobre la Tabla} \ref{prob_asoc}
 
-Para implementar este tipo de operaciones en código python, Slatt se basa principalmente en el algoritmo \textit{Apriori}, el proceso de este algoritmo sigue dos pasos: \citep{morales2013reglas}
+  El \textbf{soporte} de la cerveza, supp(cerveza) = 4/5 = 0.8
+  
+  El \textbf{soporte} de los pañales, supp(pañales) = 3/5 = 0.6
+  
+  El \textbf{soporte} de la cerveza y los pañales, supp(cerveza,pañales) = 3/5 = 0.6
+  
+  La \textbf{confianza} entre la cerveza y los pañales seria, supp(cerveza,pañales) / supp(cerveza) = 0.6 / 0.8 = 0.75
+  
+\end{tcolorbox}
+
+Para implementar este tipo de operaciones en código python, Slatt usa el algoritmo Apriori para recuperar los itemsets cuyo soporte sea mayor que un valor dado. Para resolver este problema de enumeración, Apriori utiliza una exploración en anchura entre todos los itemsets de la siguiente forma: \citep{aggarwal2015data}
 
 \begin{enumerate}
     \item Genera los itemsets.
@@ -138,7 +163,7 @@ Para implementar este tipo de operaciones en código python, Slatt se basa princ
     \item Genera las reglas revisando que cumplan con el criterio mínimo de confianza.
 \end{enumerate}
 
-\lstinputlisting[language=python,caption=\textbf{Apriori Algorithm pyhton version},frame=bottom]{codigo/apriori.py}
+\lstinputlisting[language=python,caption=\textbf{Apriori Algorithm python version},frame=bottom]{codigo/apriori.py}
 
 
 
@@ -149,7 +174,13 @@ Para implementar este tipo de operaciones en código python, Slatt se basa princ
 \newpage
 \section{Metodología y Requisitos}
 
-Para la realización del proyecto se ha utilizado una metodología incremental, debido a que dicho proyecto esta dividido en diferentes partes, las cuales unas no tienen relación directa con otras, es por esto, que he decidió usar este tipo de metodología.
+Debido a la extensión de este proyecto, se decidió usar una metodología incremental en la segunda reunión de tutoría ya que dicho proyecto posee una gran carga teórica.
+
+Las reuniones se realizaban de manera semanal o cada dos semanas, dependiendo de las dudas que me fuesen surgiendo durante dichas semanas sobre que poder introducir en el código o que tipo de estructuras de datos nueva utilizar, etc. A la entrada de la reunión se leía que se había discutido la semana anterior, se le daba una explicación al tutor de las dudas y los cambios que había estado realizando esas últimas semanas y se empezaba a revisarlo.
+
+Se ha tenido siempre una versión la cual íbamos cambiando, se empezó con la versión antigua de Slatt y siempre que se realizaba algún cambio en el código, se comprobaba que las salidas de código de la versión antigua y la modificada fuesen iguales usando tests unitarios. Esto se discutirá en el último capítulo. 
+
+
 
 \begin{figure}[ht!] % [h!] fuerza que el elemento se sitúe
                     % en la posición señalada, en vez de al
@@ -161,7 +192,7 @@ Para la realización del proyecto se ha utilizado una metodología incremental, 
 \label{fig_pro}
 \end{figure}
 
-A continuación, defino los requisitos funcionales y no funcionales del proyecto software, al no ser una aplicación destinada hacia un usuario(cliente), los requisitos no funcionales, se basan en el correcto funcionamiento de la aplicación.
+A continuación, defino los requisitos no funcionales del proyecto software, al no ser una aplicación destinada hacia un usuario (cliente) al uso, los requisitos no funcionales, se basan en el correcto funcionamiento de la aplicación.
 
 \begin{table}[h]
 \centering
@@ -169,9 +200,9 @@ A continuación, defino los requisitos funcionales y no funcionales del proyecto
 \hline
 Identificador & Descripción                              \\ \hline
 RNF01         & La aplicación deberá tener la misma funcionalidad tanto en python2 como en python3                                          \\ \hline
-RNF02          & La mejora en python3 deberá ser mas eficiente que la de su anterior versión                                                  \\ \hline
+RNF02          & La mejora en python3 deberá ser mas eficiente que la de su anterior versión                                         \\ \hline
 RNF03          & La mejora en python3 deberá tener menos lineas de código que su anterior versión                                         \\ \hline
-RNF04          & La refactorización de los métodos no supondrá un cambio en los resultados                                               \\ \hline
+RNF04          & La refactorización de los métodos mantendrá los resultados escritos a disco (logs,salidas)                          \\ \hline
 \end{tabular}
 \caption{Requisitos no funcionales del proyecto}
 \label{tab:my-table}
@@ -180,27 +211,29 @@ RNF04          & La refactorización de los métodos no supondrá un cambio en l
 \newpage
 
 \section{Diagrama de clases UML}
-En este apartado indico el diagrama de clases UML inicial de Slatt escrito en pyhton2 [\ref{fig_UML2}] y el resultado final del proyecto al reescribirlo a python3 [\ref{fig_UML3}] con las nuevas clases, herencias, etc.
+En este apartado indico el diagrama de clases UML inicial de Slatt escrito en python2 [\ref{fig_UML2}] y el resultado final del proyecto al reescribirlo a python3 [\ref{fig_UML3}] con las nuevas clases, herencias, etc.
+
 
 \begin{figure}[ht!] % [h!] fuerza que el elemento se sitúe
                     % en la posición señalada, en vez de al
                     % comienzo de una página.
 \begin{center}
-\includegraphics[width=1.45\linewidth]{imagenes/Diagrama en blanco - Clase UML (1).png}
+\includegraphics[width=1.5\linewidth]{imagenes/Diagrama en blanco - Clase UML (1).png}
 \end{center}
-\caption{Diagrama de clases UML Versión Python2}
+\caption{Diagrama de clases UML Versión python2}
 \label{fig_UML2}
 \end{figure}
 
+En este diagrama \ref{fig_UML2} se discutió sobre las conveniencias de cambiar este patrón, y se decidió no modificar el diagrama por diversas razones, uno de los motivos era que Slatt es era un aplicación muy estable y no se quería cambiar mucho la organización de sus clases, ya que sus usuarios que han aprendido a usar la versión antigua de Slatt no deberían volver a estudiarse el código, es por ello que solo se introdujo el patrón decorador en la clase decorator.py para añadir las funcionalidades de la metaprogramción al programa final. Como se puede comprobar en el la ilustración\ref{fig_UML3}.
 \newpage
 
 \begin{figure}[ht!] % [h!] fuerza que el elemento se sitúe
                     % en la posición señalada, en vez de al
                     % comienzo de una página.
 \begin{center}
-\includegraphics[width=1.5\linewidth]{imagenes/python3 - Clase UML.png}
+\includegraphics[width=1.42\linewidth]{imagenes/python3 - Clase UML.png}
 \end{center}
-\caption{Diagrama de clases UML Versión Python3}
+\caption{Diagrama de clases UML Versión python3}
 \label{fig_UML3}
 \end{figure}
 
@@ -208,7 +241,7 @@ En este apartado indico el diagrama de clases UML inicial de Slatt escrito en py
 
 \section{Diagrama de Gantt}
 
-En esta otra sección indico como ha sido divido el proyecto en función del tiempo con un diagrama de Gantt \ref{fig_GANTT} en el que se ve que tareas se han ido realizando durante el tiempo que el proyecto a estado activo.
+En esta otra sección indico como ha sido divido el proyecto en función del tiempo con un diagrama de Gantt \ref{fig_GANTT} en el que se ven las tareas que se han ido realizando durante el tiempo que el proyecto a estado activo.
 
 \begin{figure}[ht!] % [h!] fuerza que el elemento se sitúe
                     % en la posición señalada, en vez de al
@@ -216,19 +249,43 @@ En esta otra sección indico como ha sido divido el proyecto en función del tie
 \begin{center}
 \includegraphics[width=1\linewidth]{imagenes/Diagrama de Gantt básico.png}
 \end{center}
-\caption{Diagrama de clases UML Versión Python3}
+\caption{Diagrama de clases UML Versión python3}
 \label{fig_GANTT}
 \end{figure}
+
+Para implementar todos los requisitos no funcionales, después de cada reunión se decidió dividirlos en tareas, los requisitos \textit{RNF01, RNF03} se corresponden a la revisión del código ya que necesitábamos saber que partes del código se podían modificar y cuales no, para la reescritura de código se tuvieron en cuenta los requisitos \textit{RNF01, RNF02, RNF03, RNF04} ya que el código no debía de suponer ningún cambio en la funcionalidad del programa,  para los test unitarios y la corrección del código también se tuvieron en cuenta todos los requisitos no funcionales y en cuanto a la tareas de investigación (hipergrafos y kd-trees) se utilizó el \textit{RNF03} ya que se uso para hacer el código mas eficiente.
 
 
 
 \chapter{\emph{Metaprogramación}}
 
-\section{Conceptos básicos}
-En este proyecto se van a utilizar diferentes herramientas relacionadas con la metaprogramación en el entorno de desarrollo.
+\section{Introducción a la Metaprogramación}
+
+Para satisfacer el RNF03 se decidió utilizar diferentes herramientas relacionadas con la metaprogramación en el entorno de desarrollo.
 
 La metaprogramación consiste en escribir programas que manipulan otros programas, es decir, cuando un programa es capaz de recibir una entrada, modificar el contenido de dicha entrada durante su ejecución y producir como salida otro programa, es un metaprograma.
 
+Una de las definiciones comúnmente aceptadas para metaprogramación seria "programar para generar código", esto ya existe desde Lisp. 
+Esta propiedad se llama Homoiconicidad, es decir, es la propiedad de un lenguaje de programación por la que cualquier programa puede ser tratado como datos, ser manipulado y ejecutado.
+
+No hay muchos lenguajes de programación que utilicen esta propiedad ya que implica una sobrecarga en memoria poder tener el programa en forma de datos, generalmente los lenguajes de programación que lo implementan son lenguajes funcionales, pero recientemente la versión de python 3.x decidió añadir tales funcionalidades. David Bleazley, unos de los desarrolladores oficiales de python, explica en esta charla uno de los grandes cambios que existen en python3 respecto de python2, la \textbf{metaprogramación}.\footnote{\citep{David}}
+
+La parte principal de la charla es la utilización de los decoradores. La idea de los decoradores es definir funciones que definan nuevas funciones. La forma de implementarla se basa en la implementación que utiliza Lisp pero de una forma más rudimentaria. Se utiliza la nomenclatura decorador ya que no manipulan el código de la función, si no que definen una nueva función en base a la original, es decir, no la modifican pero se invoca.
+
+En python3 se implementan estas ideas utilizando la clase \textit{decorators}, los \textit{descriptores} y las \textit{metaclases}.
+
+\subsection{Usos de la Metaprogramación}
+
+\begin{enumerate}
+    \item Si queremos comprobar si una clase esta definida correctamente, podemos usar metaclases.
+    \item Podemos usar metaclases para generar errores durante la importación de los módulos de la clase.
+    \item Podemos usar la metaprogramación si queremos que nuestras clases tengan una convención especifica de métodos y atributos.
+    \item Las metaclases se pueden utilizar para modificar el atributo de clase.
+    \footnote{\citep{Farhad}}
+\end{enumerate}
+
+\newpage
+\subsection{Conceptos teóricos básicos}
 La metaprogramación se base en estos conceptos principales:
 
 \begin{itemize}
@@ -253,19 +310,15 @@ La metaprogramación se base en estos conceptos principales:
     \end{itemize}
 \end{itemize}
 
-En conclusión la metaprogramación es la programación que utiliza los programas como datos y permite modificar su propia estructura. \citep{silva2018metaprogramacion}, aunque otra definición valida seria el conjunto de cosas que tienen más que ver con el proceso que con escribir código o trabajar de manera más eficiente.
+En conclusión la metaprogramación es la programación que utiliza los programas como datos y permite modificar su propia estructura. Aunque otra definición valida seria el conjunto de cosas que tienen más que ver con el proceso que con escribir código o trabajar de manera más eficiente\footnote{\citep{silva2018metaprogramacion}}.
+
+\subsection{Elementos de metaprogramción en python3}
+En general, las clases son la plantilla para la creación de objetos al igual que las \textbf{metaclases} son la plantilla de creación de las clases y por lo tanto, también son las plantilla para la creación de objetos.
+La \textbf{Metainformación} son datos adicionales que aparecen en las clases y métodos de un programa. Como por ejemplo, de que tipo son las clases, el parámetro $\_\_doc\_\_$ ,que es la documentación relacionada a la clase, los métodos que tiene, atributos, etc. 
+
+python3 utiliza una jerarquía para esta implementación, todo objeto pertenece a una clase menos las metaclases que están por encima de una clase, y no se pueden instanciar objetos de metaclases. La metaclases agrupan un conjunto de clases, y además podemos tener metainformación sobre clases dentro de una metaclase. 
+
 \newpage
-\section{Charla metaprogramación MIT}
-
-David Bleazley en esta charla explica uno de los grandes cambios que existen en Python3 respecto de Python2, la metaprogramación.\citep{David}
-
-En concreto, explica como funcionan los decoradores, la clase \textit{decorators}, los descriptores y las metaclases, estos elementos son usados en este proyecto para mejorar el rendimiento de slatt y reducir a su vez lineas de código.
-
-\subsection{Metaclases}
-Una clase es un objeto que se utiliza para crear instancias de nuevos objetos.
-Una metaclase está por encima de una clase. Agrupa un conjunto de clases, es decir, podemos tener metainformación sobre clases dentro de una metaclase. Es importante saber que en Python todo es un objeto, incluidas las clases, y cada una de las clases es creada por una metaclase.
-
-\hfill
 
 Por ejemplo:
 
@@ -279,26 +332,23 @@ print(type(prueba_metaprogramacion))
 print(type(prueba_metaprogramacion()))
 \end{verbatim}
 
-En el primer print la terminal no devuelve: \textit{<class 'function'>}, debido a que $prueba\_metaprogramacion$ pertenece a la clase función. Mientras que en el segundo de los print la terminal devuelve: \textit{<class 'type'>}, debido a que el retorno de $prueba\_metaprogramacion()$ pertenece a la clase tipo.
+Este script escribe primero por la terminal \textit{<class 'function'>}, debido a que $prueba\_metaprogramacion$ es un objeto de la clase “function”. Mientras que en el segundo de los print la terminal devuelve: \textit{<class 'type'>}, debido a que el retorno de $prueba\_metaprogramacion()$ pertenece a la clase tipo.
 
-La clase type es una metaclase. Esta clase se usa para crear otras clases en Python. El constructor de dicha clase se usa para crear clases que pueden crear instacias de dicha clase.
+La clase type es una metaclase. Esta clase se usa para crear otras clases en python. El constructor de dicha clase se usa para crear clases que pueden crear instancias de dicha clase.
 
 \begin{verbatim}
 ##El constructor de la clase type tiene esta estructura
 
 type(cls, what, bases=None, dict=None)
-El primer parametro es el nombre de la clase
-El segundo parametro es una tuple de clases base
-El tercer parametro es un diccionario de llaves y valores,
-es decir, la implementación de la clase.
 \end{verbatim}
 
-Cuando creamos una metaclase que hereda la clase tipo, esta tiene accesso al nombre de la clase, sus padres y todos sus atributos.
+El primer parámetro es el nombre de la clase, el segundo parámetro es una tupla de clases base, el tercer parámetro es un diccionario de llaves y valores, es decir, donde se debe implementar la clase.
 
-\newpage
+Cuando creamos una metaclase que hereda la clase tipo, esta tiene acceso al nombre de la clase, sus padres y todos sus atributos.
+
 
 \subsection{Clase Type}
-$\_\_new\_\_()$ es otro ejemplo de metaprogramación. Crea nuevas instancias de clase y no está vinculado a una instancia de la clase. Este método se llama antes de llamar a $\_\_init\_\_()$. Podemos anular el $\_\_new\_\_()$ de la superclase.
+El método estático $\_\_new\_\_$ se utiliza extensivamente en metaprogramación, ya que crea nuevas instancias de clase y no está vinculado a una instancia de la clase. Este método se invoca antes de llamar a $\_\_init\_\_()$. Podemos anular el $\_\_new\_\_()$ de la superclase.
 El retorno del método $\_\_new\_\_()$ es la instancia de la clase. Esto es útil cuando queremos modificar la creación de tipos de datos inmutables como las tuplas.
 
 En este proyecto utilizamos este tipo de funcionalidad en la clase decorator.py la cual tiene una clase llamada StructMeta la cual hereda de type e implementa el funcionamiento de el metodo $\_\_new\_\_()$.
@@ -311,18 +361,10 @@ def __new__(cls, name, bases, clsdict):
     return clsobj
 \end{verbatim}
 
-\subsection{Usos de la Metaprogramación}
 
-\begin{enumerate}
-    \item Si queremos comprobar si una clase esta definida correctamente, podemos usar metaclases.
-    \item Podemos usar metaclases para generar errores durante la importación de los módulos de la clase.
-    \item Podemos usar la metaprogramación si queremos que nuestras clases tengan una convención especifica de métodos y atributos.
-    \item Las metaclases se pueden utilizar para modificar el atributo de clase.
-    \citep{Farhad}
-\end{enumerate}
 
 \subsection{Construir sistemas}
-Otra funcionalidad que nos ofrece la metaprogramación es la construcción de sistemas, ya que para la mayoría de los proyectos como este, existe un "proceso de construcción", es decir, se necesita una secuencia de operaciones para transformar todas las entradas que metemos en salidas.Por lo general este proceso suele ser bastante odioso ya que solemos tener una cantidad elevada de entradas, como por ejemplo, ejecuto un código para que funcione el programa, otro código para los benchmarks, otro código para los gráficos, es por ello que utilizamos la metaprogramación en este ámbito también. \citep{metaprogramming}
+Otra funcionalidad que nos ofrece la metaprogramación es la construcción de sistemas, ya que para este tipo de proyectos, existe un "proceso de construcción", es decir, se necesita una secuencia de operaciones para transformar todas las entradas que metemos en salidas. Por lo general este proceso suele ser bastante tedioso ya que solemos tener una cantidad elevada de entradas, como por ejemplo, ejecuto un código para que funcione el programa, otro código para los benchmarks, otro código para los gráficos, es por ello que utilizamos la metaprogramación en este ámbito también.\footnote{\citep{metaprogramming}} Información sobre la construcción de sistemas.
 
 Básicamente la funcionalidad es la siguiente, se define una serie de dependencias, una serie de objetivos y reglas para ir de uno a otro. Le indicas al sistema de compilación que objetivo desear ejecutar en particular, y el trabajo de este es buscar y encontrar todas las dependencias de ese objetivo, después aplicar las reglas que este contiene y llegar al objetivo final.
 
@@ -335,15 +377,17 @@ En este proyecto he usado uno de los sistemas de compilación más conocidos en 
 
 La directiva paper.pdf tiene una regla sobre cómo producir el lado izquierdo usando el lado derecho. O, dicho de otra manera, las cosas nombradas en el lado derecho son dependencias y el lado izquierdo es el objetivo. En make, la primera directiva también define el objetivo predeterminado. Si ejecuta makes sin argumentos, este es el objetivo que construirá.
 
+
+
 \chapter{\emph{Hipergrafo y problemas relacionados}}
 
-\section{Conceptos básicos}
+\section{Conceptos teóricos básicos}
 En dicho proyecto también se van a tratar elementos como los hipergrafos
-y algoritmos con aplicación a estos, para ello primero he realizado un primer apartado con los conceptos básicos de que es o para que sirve un hipergrafo y más adelante me dedico a una explicación más técnica y profunda en el tema.
+y algoritmos con aplicación a estos, para ello primero se ha realizado un primer apartado con los conceptos básicos sobre los hipergrafo y más adelante introduzco una explicación más técnica y profunda en el tema.
 
-Un hipergrafo H es una familia de subconjuntos (aristas) de un conjunto finito de vértices. Un hipergrafo es simple si ninguno de sus bordes está contenido en ningún otro de sus bordes. Decimos que un hipergrafo está saturado si cada subconjunto del conjunto de vértices está contenido en un borde o contiene un borde de el hipergrafo. \citep{Thomas}
+Un hipergrafo H es una familia de subconjuntos (aristas) de un conjunto finito de vértices. Un hipergrafo es simple si ninguno de sus aristas está contenido en ningún otro de sus aristas. Decimos que un hipergrafo está saturado si cada subconjunto del conjunto de vértices está contenido en una arista o contiene una arista de el hipergrafo. \citep{Thomas}
 
-Se toma como algoritmo principal \textit{The algorithm of Berge}, al cual se le añadirán diferentes mejoras analizadas y comprobadas en el paper desarrollado por \citep{JGAA-107} el cual implementa un algoritmo eficiente para la generación transversal de hipergrafos.
+Se toma como algoritmo principal \textit{The algorithm of Berge}, al cual se le añadirán diferentes mejoras analizadas y comprobadas en el paper desarrollado por \citep{JGAA-107} el cual implementa un algoritmo eficiente para la generación "transversals" de hipergrafos.
 
 
 % Añadiendo la opción «commandchars=\\\{\}», los caracteres
@@ -370,15 +414,28 @@ Se toma como algoritmo principal \textit{The algorithm of Berge}, al cual se le 
 \newpage
 \section{Problemas relacionados con SIMPLE-H-SAT en la teoría de bases de datos}
 
-Siguiendo la lectura del paper \citep{Thomas} en el apartado séptimo habla sobre los diferentes problemas relacionados con el SIMPLE-H-SAT en la teoría de bases de datos.
+Uno de los principales problemas de los hipergrafos es el conocido como SIMPLE HYPERGRAPH SATURATION o SIMPLE-H-SAT, el ejemplo más utilizado para su explicación y que además aparece en el artículo \citet{Thomas} es el problema de "La pizzería de Toni".
 
-Inicialmente, habla sobre las bases de datos relaciones y hace una explicación sobre como esta formada una relación, básicamente una
-Una relación es una tabla de tuplas distintas de pares de componente que son valores de los dominios de los atributos. Por ejemplo, $U = \{A_0,A_1,...,A_n\}$ es un conjunto de atributos, cada uno de los cuales está asociado a un dominio D. Entonces $D(A_i)$ es el dominio de un atributo $A_i$. 
+Toni tiene un hermano llamado Luigi, que también tiene una gran pizzería. Luigi está orgulloso de que cada una de sus pizzas es 'original', lo que significa que en su restaurante no hay versiones de pizzas Grande o Mini. Como se entera de los planes de su hermano, Luigi también tiene la intención de ampliar su oferta de pizza por una pizza nueva, que, por supuesto, tiene que ser una pizza 'original'. Está claro que el problema de Luigi es una versión restringida del problema de Toni. Dado que todas las pizzas son 'originales', en el correspondiente problema de saturación del hipergrafo, el hipergrafo de pizza es simple. Pero la verdadera cuestión que plantea este problema, es si la restricción en la entrada hace que el problema general de saturación sea manejable, con un numero de entradas mayor no únicamente dos entrada como en este caso.
+
+\begin{figure}[ht!] % [h!] fuerza que el elemento se sitúe
+                    % en la posición señalada, en vez de al
+                    % comienzo de una página.
+\begin{center}
+\includegraphics[width=0.4\linewidth]{imagenes/S-H-SAT.png}
+\end{center}
+\caption{Ejemplo gráfico del SIMPLE-H-SAT}
+\label{SHSAT}
+\end{figure}
+
+Siguiendo la lectura del artículo en el apartado séptimo habla sobre las bases de datos relaciones y hace una explicación sobre como esta formada una relación, básicamente una una relación es una tabla de tuplas distintas de pares de componente que son valores de los dominios de los atributos. Por ejemplo, $U = \{A_0,A_1,...,A_n\}$ es un conjunto de atributos, cada uno de los cuales está asociado a un dominio D. Entonces $D(A_i)$ es el dominio de un atributo $A_i$. 
 Entonces una relación sobre U es un subconjunto de $\prod_{i=1}^{n}D(A_i)$, y el los elementos de una relación se denominan tuplas.
 
-El paper también habla sobre las relaciones funcionales, es decir, esas reglas de asociación que nos dan una información de unas variables frente a otras, y lo explica de la siguiente manera:
+El artículo también habla sobre las relaciones funcionales, es decir, esas reglas de asociación que nos dan una información de unas variables frente a otras, y lo explica de la siguiente manera:
 
 "Dados los conjuntos $ X, Y $ de atributos, la dependencia funcional (FD) $ X \rightarrow Y $ se mantiene en la relación R si en cada tupla los valores de los atributos en Y están determinados únicamente por los valores de los atributos en X, para tuplas $ t_1 , t_2 \in R \;; t_1 [X] = t_2 [X] $ implica que $ t_1 [Y] = t_2 [Y]: $ Dado que posiblemente todas las tuplas de una relación tienen los mismos valores para algún atributo, el lado izquierdo X de un FD $ X \rightarrow Y $ puede estar vacío. Si $Y \subseteq X$, entonces se llama dependencia funcional trivial."
+
+\newpage
 
 Y en general, explica como conseguir relaciones funcionales válidas, para ello se tienen que definir diferentes términos.
 
@@ -403,11 +460,10 @@ $RR_\tau,_\gamma=\{r \in AR_\tau,_\gamma \;|\; \nexists \; r′ \in AR_\tau, \;|
 
 Con esta definición de regla representativa no redundante podemos conseguir una cantidad de reglas de asociación menor con un mismo valor de contenido, es decir, nos ahorraríamos mucho espacio en una base de datos gracias a esta definición de regla representativa.
 
-\newpage
 
-\section{Problemas relacionados con las transversales de los hipergrafos y su saturación}
+\section{Problemas relacionados con 'Hypergraph Transversals' y su saturación}
 
-El segundo problema que nos encontramos después del SIMPLE-H-SAT es el reconocimiento de las transversales mínimas de un hipergrafo, ahora indicaré cual es la complejidad de dicho problema y luego demostrare la equivalencia que tiene con SIMPLE-H-SAT y el reconocimiento transversal en tiempo polinomial, basándome en la definiciones del paper anteriormente mencionado \citep{Thomas}.
+El segundo problema que nos encontramos después del SIMPLE-H-SAT es el reconocimiento de las 'transversals' mínimas de un hipergrafo, ahora indicaré cual es la complejidad de dicho problema y luego demostrare la equivalencia que tiene con SIMPLE-H-SAT y el reconocimiento transversal en tiempo polinomial, basándome en la definiciones del artículo anteriormente mencionado \citep{Thomas}.
 
 
 \textbf{Definición 1.} Teniendo dos hipergrafos \textit{H}, \textit{G} con vértices \textit{V}. Entonces $H \geq G$ si y solo si $\forall h \in H : \exists g \in G : H \supseteq G$. Esto a su vez define la siguiente relación,  $H \leq G$ si y solo si $\forall h \in H : \exists g \in G : H \subseteq G$.
@@ -420,12 +476,11 @@ Decir que  \textit{H} = \textit{G} si y solo si $H \geq G$ y $G \geq H$, y $H \g
 
 \textbf{Corolario 1.} Un hipergrafo $H \neq \emptyset$ es saturado si y solo si $Tr(\overline{H}) \geq H$.
 
-\textbf{Prueba:} Es facilmente demostrable que $\overline{max(H)} = min(\overline{H})$, sacado directamente del Teorema 1
+\textbf{Prueba:} Es fácilmente demostrable que $\overline{max(H)} = min(\overline{H})$, sacado directamente del Teorema 1
 
 \textbf{Corolario 2.} Para demostrar si $Tr(H) \geq H$ se sostiene para un hipergrafo H es co-\textbf{NP}-completo, incluso si \textit{H} se auto completa y contiene solo aristas de tamaño 3 y n-3, donde $n = |V(H)|$
 
-%%SEGUIR PAGINA 18 identifyng
-
+\newpage
 
 \section{Axiomas de Armstrong}
 
@@ -466,30 +521,15 @@ Para ello primero definiré que es un axioma, según la tercera definición del 
 
 Si tenemos en $F^+$ un set de todas las funciones con dependencias las cuales hemos inferido de F, si aplicamos las acciones de armstrong a F no vamos a encontrar ningún set de funciones con dependencias fuera de F solo podremos encontrar estas funciones dentro de F.
 
-otro aspecto de los axiomas de armstrong es que es completo esto quiere decir que si aplicamos acciones de armstrong a F vamos a encontrar todas las funciones con dependencias existentes en dicho set.
+Otro aspecto de los axiomas de armstrong es que es completo esto quiere decir que si aplicamos acciones de armstrong a F vamos a encontrar todas las funciones con dependencias existentes en dicho set.
 
 
 
 
 \chapter{\emph{KD Trees}}
 
-\section{Conceptos básicos}
-
-Un KD Tree (también conocido como K-Dimensional Tree) es un árbol de búsqueda binario donde los datos en cada nodo son un punto k-dimensional en el espacio. Básicamente, es una estructura de datos que utiliza una partición en el espacio para organizar puntos en un espacio K-Dimensional.
-
-\begin{enumerate}
-    \item Cada nodo tiene como clave multidimensional un vector de tamaño k
-que contiene los valores de las k claves unidimensionales y tiene asociado un discriminante con valor entero entre 1 y k.
-    \item Para cada nodo con clave multidimensional x y discriminante j se
-cumple que cualquier nodo del subárbol izquierdo con clave multidimensional y cumple que su n-ésima componente es menor que la n-ésima componente de x, es decir (yn < xn ). Para el subárbol derecho se cumple que la n-ésima componente de la clave multidimensional z de cualquier nodo de este subárbol es mayor que la n-ésima componente de la clave x, es decir (zn > xn ).
-    \item La raíz del kd-tree tiene profundidad 0 y discriminante 1. Cualquier
-nodo a una profundidad p tiene discriminante de valor: (p mod k) + 1.
-\citep{marti2010copy}
-\end{enumerate}
-
-Otra de las aplicaciones es la de representar un conjunto de puntos y la consulta más frecuente sobre este conjunto es la de localizar el punto o puntos más cercanos a uno dado. Esta consulta se conoce con el nombre de búsqueda del vecino más cercano.
-
-\section{Implementación en Reglas de Asociación}
+\section{Introducción a los KD-trees y usos}
+Una de las operaciones que hemos detectado que más se repiten en la ejecución del código es comprobar que items contienen cierto numero de transacciones. KD-trees es una estructura de datos cuyo objetivo es mejorar la complejidad computacional mediante un preproceso de los datos.
 
 Los kd-trees son frecuentemente utilizados en bases de datos para satisfacer consultas que incluyan valores de varios campos. Esto se puede extrapolar a las reglas de asociación, ya que se podrían realizar consultas como se ha explicado en el ejemplo introductorio de reglas de asociación.
 
@@ -497,11 +537,24 @@ Los kd-trees son frecuentemente utilizados en bases de datos para satisfacer con
 
 Una consulta podría ser por ejemplo, saber todos los registros de personas que compren pan, leche y huevos, y además tengan entre 25 y 45 años, y que vivan en España, todo esto se podría realizar en una única consulta utilizando los \textit{KD trees} como algoritmo de búsqueda ya que permite realizar diferentes consultas simultaneas, en lugar del algoritmo \textit{apriori} actualmente utilizado, en el que al añadir múltiples consultas, su coste computacional hace que no tenga sentido dicho calculo, debido a su lento proceso.
 
-\section{Implementación KD-Trees en Slatt}
+\section{Conceptos básicos}
 
-No he incluido la implementación de KD-Trees en Slatt debido a que la forma en la que he intentado implementarlo hacia más lento el código y no conseguía una mejora real en el programa, es por esto que decidí no incluirla y usar otros algoritmos y clases para la mejora, como he mencionado a lo largo de la memoria.
+Un KD Tree (también conocido como K-Dimensional Tree) es un árbol de búsqueda binario donde los datos en cada nodo son un punto k-dimensional en el espacio. Básicamente, es una estructura de datos que utiliza una partición en el espacio para organizar puntos en un espacio K-Dimensional.
+
+\begin{enumerate}
+    \item Cada nodo tiene como clave multidimensional un vector de tamaño k
+que contiene los valores de las k claves unidimensionales y tiene asociado un discriminante \footnote{El discriminante es un nuevo elemento que se introduce en los kd-trees para manejar elementos con claves de más de una dimensión} con valor entero entre 1 y k.
+    \item Para cada nodo con clave multidimensional x y discriminante j se
+cumple que cualquier nodo del subárbol izquierdo con clave multidimensional y cumple que su n-ésima componente es menor que la n-ésima componente de x, es decir (yn < xn ). Para el subárbol derecho se cumple que la n-ésima componente de la clave multidimensional z de cualquier nodo de este subárbol es mayor que la n-ésima componente de la clave x, es decir (zn > xn ).
+    \item La raíz del kd-tree tiene profundidad 0 y discriminante 1. Cualquier
+nodo a una profundidad p tiene discriminante de valor: (p mod k) + 1.
+\citet{bentley1975multidimensional}
+\end{enumerate}
+
+Otra de las aplicaciones es la de representar un conjunto de puntos y la consulta más frecuente sobre este conjunto es la de localizar el punto o puntos más cercanos a uno dado. Esta consulta se conoce con el nombre de búsqueda del vecino más cercano.
 
 \newpage
+
 \section{Ejemplo gráfico KD Tree}
 
 \hfill
@@ -531,14 +584,19 @@ Ejemplo gráfico de un KD-tree para el siguiente ItemSet:
 Desde un punto de vista geométrico como se ve en la Ilustración \ref{arbol_kd}, cada nodo del kd tree hace una partición del plano en dos “subplanos”. En la Ilustración \ref{grafica_kd} todos los puntos en el “subplano” de la izquierda corresponden al subárbol izquierdo del nodo raíz, y los que quedan a la derecha son los puntos del subárbol derecho.
 
 
+\section{Implementación KD-Trees en Slatt}
+
+Se acordó en la reunión de la semana 3 que no era óptimo usar la implementación realizada con kd-trees debido a que para una cantidad menor de n datos los resultados que obtuve no mejoraban e incluso empeoraban el rendimiento de Slatt, esto es debido, a que usando este tipo de estructura de datos, se necesita una carga de datos elevada en memoria para poder exprimir al máximo el poder computacional que tiene, si usamos pocos datos como era el caso, además usando este tipo de estructura de datos no se satisfacía el requisito no funcional \textit{RNF02}, por lo que la descartamos, y nos quedamos con la explicación meramente teórica de los kd-trees, que nos podría servir para un problema más grande que el que se trata en este proyecto.
+
+
 \chapter{\emph{Desarrollo Software}}
 En este aparatado del proyecto se muestran que cambios han sido necesarios en el código para la correcta ejecución de Slatt pasando todo su código de python2 a python3, los test necesarios para su correcto funcionamiento y además se explica que mejoras se han llevado a cabo tanto de rendimiento, como en la reducción del número de lineas de código.
 
 \section{Ejecución y funcionamiento de Slatt}
 
-Slatt es una herramienta matemática que se encarga de mediante una entrada de datos en este caso, por ejemplo, un dataset sobre los problemas de visión de ciertas personas, el cual dispone de 4 atributos, la edad, la prescipción (myope, hypermetrope,etc), si tiene o no astigmatismo y la cantidad de lágrimas que genera.
+Slatt es una herramienta matemática que se encarga de mediante una entrada de datos en este caso, por ejemplo, un dataset sobre los problemas de visión de ciertas personas, el cual dispone de 4 atributos, la edad, la prescripción (myope, hypermetrope,etc), si tiene o no astigmatismo y la cantidad de lágrimas que genera.
 
-Se introduce dicho dataset en el prgrama principal y la herramiente devuelve diferentes datos como son la confianza, el soporte y con esto generar las diferentes reglas de asociación que existen y cuales de estas son reglas de inferencia. 
+Se introduce dicho dataset en el programa principal y la herramienta devuelve diferentes datos como son la confianza, el soporte y con esto generar las diferentes reglas de asociación que existen y cuales de estas son reglas de inferencia. 
 
 \section{Test unitarios}
 
@@ -559,7 +617,7 @@ En esta sección se va a discutir cuales han sido los cambios y mejoras en cada 
 
 En la actualidad, existen dos tipos de versiones de python, las cuales son 2.x en la que está inicialmente escrita Slatt y 3.x en la cual se ha estado desarrollado este proyecto.
 
-Las principales diferencias que he encontrado en el proyecto han sido las siguientes \citep{diferencias}:
+Las principales diferencias que he encontrado en el proyecto han sido las siguientes \citet{diferencias}:
 
 \begin{enumerate}
     \item \textbf{Sentencia print}
@@ -569,7 +627,7 @@ Las principales diferencias que he encontrado en el proyecto han sido las siguie
     
     \item \textbf{Comparación de tipos}
     
-    En \textbf{pyhton2} se permiten las comparaciones entre objetos de distintos tipos, mientras que en \textbf{python3} nos lanza una excepción del tipo \textit{TypeError}, esto a sido necesario tenerlo en cuanta en el código porque había bastantes comparaciones de tipos distintos a lo largo del código en clase como brulattice.py o closminer.py.
+    En \textbf{python2} se permiten las comparaciones entre objetos de distintos tipos, mientras que en \textbf{python3} nos lanza una excepción del tipo \textit{TypeError}, esto a sido necesario tenerlo en cuanta en el código porque había bastantes comparaciones de tipos distintos a lo largo del código en clase como brulattice.py o closminer.py.
     
     \item \textbf{División de números enteros}
     
@@ -577,22 +635,27 @@ Las principales diferencias que he encontrado en el proyecto han sido las siguie
     
     \item \textbf{Iterar un diccionario}
     
-    La ultima diferencia que se ha detectado en código a la hora de hacer la reescritura a \textbf{python3} a sido la iteración de diccionarios ya que en \textbf{python2} se pueden iterar los elementos clave-valor de un diccionario con el método \textit{iteritems()} o \textit{items()}, mientras que en python3 únicamente se puede usar el segundo de estos dos métodos, ya que con el primero de ellos se produce una excepción de tipo \textit{AttributeError}.
-    A su vez, los métodos \textit{iterkeys()} e \textit{itervalues()} para iterar las claves y los valores de un diccionario respectivamente no existen en Python 3. En su lugar tenemos que usar los métodos \textit{keys()} y \textit{values()}. Estos métodos tanto \textit{keys()}, \textit{values()} como items() se han visto afectados en clases como brulattice.py o cboost.py
+    Otra diferencia que se ha detectado en código a la hora de hacer la reescritura a \textbf{python3} a sido la iteración de diccionarios ya que en \textbf{python2} se pueden iterar los elementos clave-valor de un diccionario con el método \textit{iteritems()} o \textit{items()}, mientras que en python3 únicamente se puede usar el segundo de estos dos métodos, ya que con el primero de ellos se produce una excepción de tipo \textit{AttributeError}.
+    A su vez, los métodos \textit{iterkeys()} e \textit{itervalues()} para iterar las claves y los valores de un diccionario respectivamente no existen en python 3. En su lugar tenemos que usar los métodos \textit{keys()} y \textit{values()}. Estos métodos tanto \textit{keys()}, \textit{values()} como items() se han visto afectados en clases como brulattice.py o cboost.py
+    
+    \item \textbf{Patrón decorador}
+    
+    Por ultimo, una de las grandes y más importantes diferencias que se ha encontrado es la metaprogramación, en concreto el patrón decorador, esta funcionalidad ha sido utilizada en la versión de python3, ya que nos ofrece una reducción de código a la hora de definir funciones que se repiten en una misma clase.
     
 \end{enumerate}
-
+\newpage
 \subsection{Cambios realizados en las clases}
 
 \begin{itemize}
 
 \item \textbf{brulattice.py}
 
-En la clase brulattice.py no se han realizado mejoras ni cambios en el código salvo lo necesario para la ejecución en python3.
+En la clase brulattice.py no se han realizado mejoras ni cambios en el código salvo lo necesario para la ejecución en python3. (\# lineas antes = 93, \# lineas después = 93)
 
 \item \textbf{cboost.py}
 
-En la clase cboost.py inicialmente he modificado el método allsubsets para que sea mas corto y eficiente utilizando la librería de combinations procedente de itertools la cual me permite realizar fors anidados de una manera más eficiente y con un número de lineas reducido.
+En la clase cboost.py inicialmente he modificado el método allsubsets para que sea mas corto y eficiente utilizando la librería de combinations procedente de itertools la cual me permite realizar fors anidados de una manera más eficiente y con un número de lineas reducido. (\# lineas antes = 45, \# lineas después = 40)
+
 \begin{verbatim}
     def allsubsets(givenset):
     aset = givenset.copy()
@@ -632,21 +695,21 @@ Dentro del método \textit{filt()} también se han cambiado alguno de los fors a
 
 \item \textbf{clattice.py}
 
-En la clase clattice.py utilice la variable \_processing para eliminar el \_\_init\_\_ el cual era muy largo y costoso definiéndolo en un método fuera de la clase el cual se ejecuta una vez y no es necesario volver a ejecutar con lo que a la larga nos ahorramos código en tiempo de ejecución, por lo demás no he incluido ninguna mejora más respecto a python2.
+En la clase clattice.py utilice la variable \_processing para eliminar el \_\_init\_\_ el cual era muy largo y costoso definiéndolo en un método fuera de la clase el cual se ejecuta una vez y no es necesario volver a ejecutar con lo que a la larga nos ahorramos código en tiempo de ejecución, por lo demás no he incluido ninguna mejora más respecto a python2. (\# lineas antes = 154, \# lineas después = 136)
 
 \item \textbf{closminer.py}
 
-En la clase closminer.py se ha realizado un cambio similar al de clattice.py introduciendo una método pos\_init que funciona como método auxiliar para la creación de una instancia de closminer, además de introducir la herencia de la clase structure de decorator para poder eliminar el método \_\_init\_\_ y así acelerar el proceso como hemos hecho en las demás clases del programa.
+En la clase closminer.py se ha realizado un cambio similar al de clattice.py introduciendo una método pos\_init que funciona como método auxiliar para la creación de una instancia de closminer, además de introducir la herencia de la clase structure de decorator para poder eliminar el método \_\_init\_\_ y así acelerar el proceso como hemos hecho en las demás clases del programa. (\# lineas antes = 300, \# lineas después = 84)
 
 \item \textbf{corr.py}
 
-La clase corr.py es una clase con pocas lineas de código y difícil de optimizar más ya que no contiene método muy densos, por que únicamente he realiza la herencia de Structure y he eliminado el constructor ineficiente que teníamos en python2.
+La clase corr.py es una clase con pocas lineas de código y difícil de optimizar más ya que no contiene método muy densos, por que únicamente he realiza la herencia de Structure y he eliminado el constructor ineficiente que teníamos en python2. (\# lineas antes = 49, \# lineas después = 22)
 
 \item \textbf{decorator.py}
 
 La clase decorator.py es una nueva clase implementada para \textbf{python3} la cual nos permite utilizar diferentes funcionalidades de la metaprogramación mencionadas anteriormente, como es la creación de constructores mediante una simple linea de código gracias a las clase Structure  y la variable \_fields o incluso introducir partes del código (funciones, métodos) con otra variable llamada \_processing.
 
-También se introducen un método que nos permite saber quienes son las clases padre de una clase u objeto, gracias al modulo \textit{Signature} de la clase inspect.py.
+También se introducen un método que nos permite saber quienes son las clases padre de una clase u objeto, gracias al modulo \textit{Signature} de la clase inspect.py. (\# lineas antes = 0, \# lineas después = 72, se añaden lineas debido a que es una clase nueva)
 
 \item \textbf{hypergraph.py}
 
@@ -669,15 +732,15 @@ Con este patrón se consigue resumir todas y cada una de las funciones de la cla
 
 \item \textbf{rerulattice.py}
 
-En la clase rerulattice.py no se han realizado mejoras ni cambios en el código salvo lo necesario para la ejecución en python3.
+En la clase rerulattice.py no se han realizado mejoras ni cambios en el código salvo lo necesario para la ejecución en python3. (\# lineas antes = 101, \# lineas después = 101)
 
 \item \textbf{slanode.py}
 
-En esta clase slanode.py se ha eliminado la clase \textit{auxitset} con todos sus métodos, introduciéndola dentro de la propia clase \textit{slanode}, en concreto se han introducido los dos métodos \textit{str2node} y \textit{set2node} en la clase \textit{slanode} y también se ha creado el \_\_init\_\_ de \textit{auxitset} y \textit{slanode} con un solo método llamado \_\_new\_\_ que introduce como parámetros los atributos de la clase y los inicializa sin ser necesario usar una clase auxiliar.
+En esta clase slanode.py se ha eliminado la clase \textit{auxitset} con todos sus métodos, introduciéndola dentro de la propia clase \textit{slanode}, en concreto se han introducido los dos métodos \textit{str2node} y \textit{set2node} en la clase \textit{slanode} y también se ha creado el \_\_init\_\_ de \textit{auxitset} y \textit{slanode} con un solo método llamado \_\_new\_\_ que introduce como parámetros los atributos de la clase y los inicializa sin ser necesario usar una clase auxiliar. (\# lineas antes = 81, \# lineas después = 53)
 
 \item \textbf{slarule.py}
 
-En esta otra clase se añade también al herencia de la clase decorator para poder minimizar la creación del constructor \_\_init\_\_ , se eliminan todas la ocurrencias de igualdad con 0, ya que en este caso siempre es verdadero y por lo tanto, las reglas if x = 0 son inutiles un ejemplo de ello seria:
+En esta otra clase se añade también al herencia de la clase decorator para poder minimizar la creación del constructor \_\_init\_\_ , se eliminan todas la ocurrencias de igualdad con 0, ya que en este caso siempre es verdadero y por lo tanto, las reglas if x = 0 son inútiles un ejemplo de ello seria:
 
 \begin{verbatim}
     if self.an.supp == 0:
@@ -689,15 +752,15 @@ En esta otra clase se añade también al herencia de la clase decorator para pod
         self.confval = float(self.cn.supp)/self.an.supp
 \end{verbatim}
 
-Con este simple cambio se genera un pequeña mejora en el rendimineto del programa y a su vez facilita la compresión del mismo.
+Con este simple cambio se genera un pequeña mejora en el rendimiento del programa y a su vez facilita la compresión del mismo. (\# lineas antes = 116, \# lineas después = 102)
 
-\item \textbf{slattice.py}
+\item \textbf{Slattice.py}
 
-En la clase slattice.py no se han realizado mejoras ni cambios en el código salvo lo necesario para la ejecución en python3.
+En la clase Slattice.py no se han realizado mejoras ni cambios en el código salvo lo necesario para la ejecución en python3.(\# lineas antes = 128, \# lineas después = 128)
     
 \item \textbf{verbosity.py}
 
-En esta clase se añade una herencia de la clase decorator.py previamente analizada, verbosity utiliza una de las clases de decorator llamada Structure la cual permite eliminar el \_\_init\_\_ de la clase añadiendo una unica variable llamada \_fields, en la cual se definen cada uno de los parametros definidos en el \_\_init\_\_, tanto argumentos como los propios atributos de la clase.
+En esta clase se añade una herencia de la clase decorator.py previamente analizada, verbosity utiliza una de las clases de decorator llamada Structure la cual permite eliminar el \_\_init\_\_ de la clase añadiendo una única variable llamada \_fields, en la cual se definen cada uno de los parámetros definidos en el \_\_init\_\_, tanto argumentos como los propios atributos de la clase.
 
 En código se ve así:
 \begin{verbatim}
@@ -716,12 +779,13 @@ En código se ve así:
         _fields = [('verb', True), ('lim', 0), ('count', 0)]
 \end{verbatim}
 
-Con este cambio conseguimos una mejora en cuanto al número de lineas y simplicidad de código enorme, ya que realizar el constructor de la clase antes nos costaba 7 lineas donde ahora lo podemos conseguir en una. Por lo demás, los demás cambios han sido simplemente en la sintaxis ya que python2 y python3 tienen diferencias en el lexico. (\# lineas antes = 47, \# lineas después = 35)
+Con este cambio conseguimos una mejora en cuanto al número de lineas y simplicidad de código enorme, ya que realizar el constructor de la clase antes nos costaba 7 lineas donde ahora lo podemos conseguir en una. Por lo demás, los demás cambios han sido simplemente en la sintaxis ya que python2 y python3 tienen diferencias en el léxico. (\# lineas antes = 47, \# lineas después = 35)
 \end{itemize}
 
-\section{Discusión y resultados de la mejora}
+Finalmente, se ha obtenido una reducción en lineas de código de 1316 en la versión de python 2.7 original de Slatt hasta un total de 1052 lineas de código en la versión reescrito en python 3.x llegando a casi un 8\% en la reducción de código, uno de los objetivos principales del proyecto. \footnote{Dejo el código fuente abierto en mi repositorio de GitHub \url{https://github.com/alex148m/AlejandroTFG}}
 
-DUDA SI METER ESTE APARTADO
+
+
 
 \chapter{\emph{Conclusiones}}
 
@@ -731,7 +795,7 @@ Para esto se realizo inicialmente una búsqueda de información sobre dichas est
 
 \hfill
 
-Comentar que era difícil la mejora en el propio código de pyhton2, ya que no había mucha mejora posible en el propio código que venia de serie, es por esto que se busco realizar clases auxiliares que proporcionasen algo de mejoría al código, siempre buscando un mejora tanto de rendimiento como en lineas de código, este fue el objetivo principal a la hora de la reescritura.
+Comentar que era difícil la mejora en el propio código de python2, ya que no había mucha mejora posible en el propio código que venia de serie, es por esto que se busco realizar clases auxiliares que proporcionasen algo de mejoría al código, siempre buscando un mejora tanto de rendimiento como en lineas de código, este fue el objetivo principal a la hora de la reescritura.
 
 \hfill
 

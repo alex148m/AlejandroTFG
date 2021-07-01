@@ -33,7 +33,7 @@ ToDo:
 """
 
 from closminer import closminer
-
+from slanode import *
 from verbosity import verbosity
 from corr import corr
 from collections import defaultdict

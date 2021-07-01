@@ -1,0 +1,2 @@
+
+[Slatt] Initializing lattice from file e13... computing parameters... ...reading closures from XML file... 7 closures found. [slanode([]), slanode(['b']), slanode(['a']), slanode(['a', 'b']), slanode(['c']), slanode(['c', 'b']), slanode(['a', 'c', 'b'])]

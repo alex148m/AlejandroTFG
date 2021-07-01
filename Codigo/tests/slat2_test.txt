@@ -1,0 +1,28 @@
+
+[Slatt] Initializing lattice from file e13... computing parameters... 
+[Slatt] Something is wrong! Platform Linux not handled yet, sorry
+
+[Slatt] Computing closures at support 7.14%; singletons first... 3 such closures; computing larger closures... ...done. 7 closures found. 
+[Slatt] The max support is 11; the effective absolute support threshold is 4, equivalent to 30.769% of 13 transactions. 
+[Slatt] Computing cuts for minimal generators... ...computing (non-)antecedents... ...done; computing transversal antecedents... ...done; 
+[Slatt] Initializing min supp below free sets... ...done.
+{  } (13)
+{ b } (11)
+{ a } (10)
+{ a,b } (9)
+{ c } (6)
+{ b,c } (5)
+{ a,b,c } (4)
+
+Test _findinmingens: { a,b } (9)
+Iteration-free basis:
+a c => b  [c: 1.0 s: 4 w: 1.5 ]
+
+[Slatt] Filtering minimal generators to obtain the Guigues-Duquenne basis... ...done.
+
+Guigues-Duquenne basis:
+a c => b  [c: 1.0 s: 4 w: 1.5 ]
+
+1 rules in the iteration-free basis
+
+1 rules in the Guigues-Duquenne basis

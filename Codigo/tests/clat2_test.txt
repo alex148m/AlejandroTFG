@@ -1,0 +1,46 @@
+
+[Slatt] Initializing lattice from file e13... computing parameters... 
+[Slatt] Computing closures at support 65.00%; singletons first... 2 such closures; computing larger closures... ...done. 4 closures found. Additionally checked 1 infrequent sets as negative border. 
+[Slatt] The max support is 11; the effective absolute support threshold is 9, equivalent to 69.231% of 13 transactions. 
+[Slatt] Module clattice running as test on file e13 
+[Slatt] Lattice read in:
+{  } (13)
+{ b } (11)
+{ a } (10)
+{ a,b } (9)
+{  } (13) preds:
+
+{ b } (11) preds:
+{  } (13) ,
+{ a } (10) preds:
+{  } (13) ,
+{ a,b } (9) preds:
+{  } (13) , { b } (11) , { a } (10) ,
+Closure of ac: { a,b,c }
+Closure of ab: { a,b } (9)
+Is ac closed? False
+Is ab closed? True
+cutting at threshold 0.1
+pos cut at a: [slanode([])]
+neg cut at a: []
+cutting all nodes now at threshold 0.75
+
+At: {  } (13)
+  mxs: 11 mns: 13
+pos cut:
+neg cut:
+
+At: { b } (11)
+  mxs: 9 mns: 13
+pos cut: {  } (13)
+neg cut:
+
+At: { a } (10)
+  mxs: 9 mns: 13
+pos cut: {  } (13)
+neg cut:
+
+At: { a,b } (9)
+  mxs: 0 mns: 10
+pos cut: { b } (11) { a } (10)
+neg cut: {  } (13)
